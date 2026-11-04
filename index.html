@@ -13,6 +13,7 @@
             --text: #1e293b;
             --border: #e2e8f0;
             --success: #16a34a;
+            --accent: #0f172a;
         }
 
         * {
@@ -35,7 +36,7 @@
         header {
             text-align: center;
             margin-bottom: 30px;
-            max-width: 600px;
+            max-width: 800px;
         }
 
         h1 {
@@ -69,7 +70,7 @@
 
         .container {
             width: 100%;
-            max-width: 600px;
+            max-width: 800px;
         }
 
         .card {
@@ -79,6 +80,7 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             border: 1px solid var(--border);
             display: none;
+            margin-bottom: 30px;
         }
 
         .card.active {
@@ -89,6 +91,12 @@
             margin-bottom: 20px;
             border-bottom: 2px solid var(--border);
             padding-bottom: 8px;
+            color: var(--accent);
+        }
+
+        h3 {
+            margin: 20px 0 10px 0;
+            color: var(--primary);
         }
 
         .form-group {
@@ -141,27 +149,29 @@
             white-space: pre-wrap;
         }
 
-        /* Estilos da Calculadora */
+        /* Estilos da Calculadora e Conteúdo */
         .food-list {
             margin-bottom: 15px;
             font-size: 14px;
             color: #64748b;
         }
 
-        .table-nutri {
+        .table-nutri, .table-report {
             width: 100%;
             margin-top: 20px;
             border-collapse: collapse;
         }
 
-        .table-nutri th, .table-nutri td {
+        .table-nutri th, .table-nutri td, .table-report th, .table-report td {
             border: 1px solid var(--border);
-            padding: 10px;
+            padding: 12px;
             text-align: left;
+            font-size: 14px;
         }
 
-        .table-nutri th {
+        .table-nutri th, .table-report th {
             background-color: #f1f5f9;
+            font-weight: 600;
         }
 
         .disclaimer {
@@ -170,19 +180,49 @@
             margin-top: 15px;
             text-align: center;
         }
+
+        /* Estilos específicos da seção de Robótica */
+        .robotica-content p {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .robotica-content ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .robotica-content li {
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        .ascii-art {
+            font-family: monospace;
+            background: #0f172a;
+            color: #38bdf8;
+            padding: 15px;
+            border-radius: 6px;
+            white-space: pre;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 13px;
+            line-height: 1.2;
+        }
     </style>
 </head>
 <body>
 
     <header>
         <h1>PROJETO: TECNOLOGIA, ÉTICA E SAÚDE</h1>
-        <p>Projeto Integrador desenvolvido de forma interativa para a Web</p>
+        <p>Projeto Integrador desenvolvido para a Web • Acessibilidade e Qualidade de Vida</p>
     </header>
 
     <nav class="menu-nav">
         <button class="btn-nav active" onclick="switchTab('cofre')">1 - Cofre Digital</button>
         <button class="btn-nav" onclick="switchTab('prompt')">2 - Engenharia de Prompt</button>
         <button class="btn-nav" onclick="switchTab('nutri')">3 - Calculadora Nutricional</button>
+        <button class="btn-nav" onclick="switchTab('robotica')">4 - Robótica e Acessibilidade</button>
     </nav>
 
     <main class="container">
@@ -275,26 +315,3 @@
             <table class="table-nutri">
                 <thead>
                     <tr>
-                        <th>Nutriente</th>
-                        <th>Total Acumulado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Calorias</td><td id="total-calorias">0.0 kcal</td></tr>
-                    <tr><td>Proteínas</td><td id="total-proteinas">0.0 g</td></tr>
-                    <tr><td>Carboidratos</td><td id="total-carboidratos">0.0 g</td></tr>
-                    <tr><td>Gorduras</td><td id="total-gorduras">0.0 g</td></tr>
-                    <tr><td>Fibras</td><td id="total-fibras">0.0 g</td></tr>
-                </tbody>
-            </table>
-
-            <button class="btn-action" style="background-color: #64748b; margin-top: 15px;" onclick="limparNutri()">Limpar Tudo</button>
-            <p class="disclaimer">Valores aproximados para fins educativos. O resultado não substitui orientação nutricional.</p>
-        </section>
-
-    </main>
-
-    <script>
-        // --- GERENCIADOR DE ABAS (MENU PRINCIPAL) ---
-        function switchTab(tabId) {
-            document.querySelectorAll('.card').forEach(card => card.classList.remove('active'));
