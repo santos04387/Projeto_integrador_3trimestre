@@ -1,688 +1,300 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Projeto Integrador: Tecnologia, Ética e Saúde</title>
-   <style>
-       :root {
-           --primary: #2563eb;
-           --primary-hover: #1d4ed8;
-           --bg: #f8fafc;
-           --card: #ffffff;
-           --text: #0f172a;
-           --border: #e2e8f0;
-           --accent: #10b981;
-           --danger: #ef4444;
-       }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto: Tecnologia, Ética e Saúde</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --border: #e2e8f0;
+            --success: #16a34a;
+        }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-       * {
-           box-sizing: border-box;
-           margin: 0;
-           padding: 0;
-           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-       }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
 
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
 
-       body {
-           background-color: var(--bg);
-           color: var(--text);
-           padding: 20px;
-           display: flex;
-           justify-content: center;
-       }
+        h1 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
 
+        .menu-nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-       .container {
-           max-width: 900px;
-           width: 100%;
-       }
+        .btn-nav {
+            background-color: var(--card-bg);
+            border: 2px solid var(--border);
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
 
+        .btn-nav.active, .btn-nav:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
 
-       header {
-           text-align: center;
-           margin-bottom: 30px;
-           padding: 20px;
-           background-color: var(--card);
-           border-radius: 12px;
-           box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-       }
+        .container {
+            width: 100%;
+            max-width: 600px;
+        }
 
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border);
+            display: none;
+        }
 
-       h1 {
-           color: var(--primary);
-           font-size: 1.8rem;
-           margin-bottom: 8px;
-       }
+        .card.active {
+            display: block;
+        }
 
+        h2 {
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 8px;
+        }
 
-       nav {
-           display: flex;
-           gap: 10px;
-           margin-bottom: 20px;
-           flex-wrap: wrap;
-       }
+        .form-group {
+            margin-bottom: 15px;
+        }
 
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
 
-       nav button {
-           flex: 1;
-           padding: 12px;
-           border: none;
-           background: var(--card);
-           color: var(--text);
-           font-weight: 600;
-           cursor: pointer;
-           border-radius: 8px;
-           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-           transition: all 0.2s;
-           min-width: 150px;
-       }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 14px;
+        }
 
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
 
-       nav button.active {
-           background: var(--primary);
-           color: white;
-       }
+        .btn-action {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: background 0.2s;
+            margin-top: 10px;
+        }
 
+        .btn-action:hover {
+            background-color: var(--primary-hover);
+        }
 
-       nav button:hover:not(.active) {
-           background: #e0e7ff;
-       }
+        .result-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f1f5f9;
+            border-radius: 6px;
+            border-left: 4px solid var(--primary);
+            word-break: break-all;
+            white-space: pre-wrap;
+        }
 
+        /* Estilos da Calculadora */
+        .food-list {
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #64748b;
+        }
 
-       .tab-content {
-           display: none;
-           background: var(--card);
-           padding: 24px;
-           border-radius: 12px;
-           box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-       }
+        .table-nutri {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
 
+        .table-nutri th, .table-nutri td {
+            border: 1px solid var(--border);
+            padding: 10px;
+            text-align: left;
+        }
 
-       .tab-content.active {
-           display: block;
-       }
+        .table-nutri th {
+            background-color: #f1f5f9;
+        }
 
-
-       .form-group {
-           margin-bottom: 16px;
-       }
-
-
-       label {
-           display: block;
-           margin-bottom: 6px;
-           font-weight: 600;
-       }
-
-
-       input, textarea, select {
-           width: 100%;
-           padding: 10px;
-           border: 1px solid var(--border);
-           border-radius: 6px;
-           font-size: 1rem;
-       }
-
-
-       textarea {
-           resize: vertical;
-           min-height: 100px;
-       }
-
-
-       .btn {
-           background: var(--primary);
-           color: white;
-           border: none;
-           padding: 10px 18px;
-           border-radius: 6px;
-           cursor: pointer;
-           font-weight: 600;
-           transition: background 0.2s;
-       }
-
-
-       .btn:hover {
-           background: var(--primary-hover);
-       }
-
-
-       .btn-secondary {
-           background: #64748b;
-       }
-       .btn-secondary:hover {
-           background: #475569;
-       }
-
-
-       .btn-danger {
-           background: var(--danger);
-       }
-
-
-       .result-box {
-           margin-top: 16px;
-           padding: 12px;
-           background: #f1f5f9;
-           border-left: 4px solid var(--primary);
-           border-radius: 4px;
-           word-break: break-all;
-           white-space: pre-wrap;
-       }
-
-
-       /* Tabela Nutricional */
-       table {
-           width: 100%;
-           border-collapse: collapse;
-           margin-top: 15px;
-       }
-
-
-       th, td {
-           padding: 10px;
-           text-align: left;
-           border-bottom: 1px solid var(--border);
-       }
-
-
-       th {
-           background-color: #f8fafc;
-       }
-
-
-       .nutrition-summary {
-           display: grid;
-           grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-           gap: 10px;
-           margin-top: 20px;
-       }
-
-
-       .card-stat {
-           background: #f1f5f9;
-           padding: 12px;
-           border-radius: 8px;
-           text-align: center;
-       }
-
-
-       .card-stat span {
-           display: block;
-           font-size: 0.85rem;
-           color: #64748b;
-       }
-
-
-       .card-stat strong {
-           font-size: 1.2rem;
-           color: var(--primary);
-       }
-
-
-       .disclaimer {
-           font-size: 0.85rem;
-           color: #64748b;
-           margin-top: 15px;
-           font-style: italic;
-       }
-   </style>
+        .disclaimer {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 15px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 
-
-<div class="container">
-   <header>
-       <h1>PROJETO INTEGRADOR</h1>
-       <p>Tecnologia, Ética e Saúde</p>
-   </header>
-
-
-   <nav>
-       <button class="nav-btn active" onclick="switchTab('cofre')">1 - Cofre Digital</button>
-       <button class="nav-btn" onclick="switchTab('prompt')">2 - Engenharia de Prompt</button>
-       <button class="nav-btn" onclick="switchTab('nutricao')">3 - Calculadora Nutricional</button>
-   </nav>
-
-
-   <!-- ATIVIDADE 1: COFRE DIGITAL -->
-   <div id="cofre" class="tab-content active">
-       <h2>Cofre Digital (Criptografia AES-GCM)</h2>
-       <br>
-      
-       <div style="display: flex; gap: 10px; margin-bottom: 15px;">
-           <button class="btn" id="btn-mode-enc" onclick="setVaultMode('enc')">Criptografar</button>
-           <button class="btn btn-secondary" id="btn-mode-dec" onclick="setVaultMode('dec')">Descriptografar</button>
-       </div>
-
-
-       <div id="vault-encrypt-form">
-           <div class="form-group">
-               <label for="msg-encrypt">Mensagem Secreta:</label>
-               <textarea id="msg-encrypt" placeholder="Digite sua mensagem aqui..."></textarea>
-           </div>
-           <div class="form-group">
-               <label for="pass-encrypt">Senha de Proteção:</label>
-               <input type="password" id="pass-encrypt" placeholder="Crie uma senha forte">
-           </div>
-           <button class="btn" onclick="executarCriptografia()">Criptografar Mensagem</button>
-       </div>
-
-
-       <div id="vault-decrypt-form" style="display: none;">
-           <div class="form-group">
-               <label for="code-decrypt">Código Criptografado (Base64):</label>
-               <textarea id="code-decrypt" placeholder="Cole o código criptografado aqui..."></textarea>
-           </div>
-           <div class="form-group">
-               <label for="pass-decrypt">Senha:</label>
-               <input type="password" id="pass-decrypt" placeholder="Digite sua senha">
-           </div>
-           <button class="btn" onclick="executarDescriptografia()">Descriptografar Mensagem</button>
-       </div>
-
-
-       <div class="result-box" id="vault-result" style="display: none;"></div>
-   </div>
-
-
-   <!-- ATIVIDADE 2: ENGENHARIA DE PROMPT -->
-   <div id="prompt" class="tab-content">
-       <h2>Engenharia de Prompt</h2>
-       <p style="margin-bottom: 15px; color: #64748b;">Gere instruções otimizadas para enviar a Modelos de IA.</p>
-
-
-       <div class="form-group">
-           <label for="prompt-text">Texto para Simplificar:</label>
-           <textarea id="prompt-text" placeholder="Cole ou digite o texto original aqui..."></textarea>
-       </div>
-
-
-       <div class="form-group">
-           <label for="prompt-type">Tipo de Prompt:</label>
-           <select id="prompt-type">
-               <option value="1">Prompt Simples</option>
-               <option value="2">Prompt Detalhado (Acessibilidade)</option>
-           </select>
-       </div>
-
-
-       <button class="btn" onclick="gerarPrompt()">Gerar Prompt</button>
-
-
-       <div class="result-box" id="prompt-result" style="display: none;">
-           <strong>Prompt Gerado:</strong>
-           <p id="prompt-output" style="margin-top: 8px;"></p>
-           <button class="btn btn-secondary" style="margin-top: 10px;" onclick="copiarPrompt()">Copiar Prompt</button>
-       </div>
-   </div>
-
-
-   <!-- ATIVIDADE 3: CALCULADORA NUTRICIONAL -->
-   <div id="nutricao" class="tab-content">
-       <h2>Calculadora Nutricional</h2>
-      
-       <div style="display: grid; grid-template-columns: 2fr 1fr auto; gap: 10px; margin-top: 15px;" class="form-group">
-           <div>
-               <label for="alimento-select">Alimento:</label>
-               <select id="alimento-select"></select>
-           </div>
-           <div>
-               <label for="alimento-qtd">Gramas (g):</label>
-               <input type="number" id="alimento-qtd" value="100" min="1">
-           </div>
-           <div style="align-self: flex-end;">
-               <button class="btn" onclick="adicionarAlimento()">Adicionar</button>
-           </div>
-       </div>
-
-
-       <h3>Itens Adicionados</h3>
-       <table>
-           <thead>
-               <tr>
-                   <th>Alimento</th>
-                   <th>Qtd (g)</th>
-                   <th>Calorias</th>
-                   <th>Ação</th>
-               </tr>
-           </thead>
-           <tbody id="lista-alimentos">
-               <tr>
-                   <td colspan="4" style="text-align: center; color: #94a3b8;">Nenhum alimento adicionado.</td>
-               </tr>
-           </tbody>
-       </table>
-
-
-       <div class="nutrition-summary">
-           <div class="card-stat">
-               <span>Calorias</span>
-               <strong id="tot-calorias">0 kcal</strong>
-           </div>
-           <div class="card-stat">
-               <span>Proteínas</span>
-               <strong id="tot-proteinas">0 g</strong>
-           </div>
-           <div class="card-stat">
-               <span>Carboidratos</span>
-               <strong id="tot-carboidratos">0 g</strong>
-           </div>
-           <div class="card-stat">
-               <span>Gorduras</span>
-               <strong id="tot-gorduras">0 g</strong>
-           </div>
-           <div class="card-stat">
-               <span>Fibras</span>
-               <strong id="tot-fibras">0 g</strong>
-           </div>
-       </div>
-
-
-       <p class="disclaimer">* Valores aproximados para fins educativos. Não substitui orientação nutricional profissional.</p>
-   </div>
-</div>
-
-
-<script>
-   // ==========================================
-   // NAVEGAÇÃO ENTRE ABAS
-   // ==========================================
-   function switchTab(tabId) {
-       document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-       document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
-      
-       document.getElementById(tabId).classList.add('active');
-       event.currentTarget.classList.add('active');
-   }
-
-
-   // ==========================================
-   // ATIVIDADE 1 - COFRE DIGITAL (Crypto API Nativa)
-   // ==========================================
-   function setVaultMode(mode) {
-       const encForm = document.getElementById('vault-encrypt-form');
-       const decForm = document.getElementById('vault-decrypt-form');
-       const btnEnc = document.getElementById('btn-mode-enc');
-       const btnDec = document.getElementById('btn-mode-dec');
-       const resBox = document.getElementById('vault-result');
-
-
-       resBox.style.display = 'none';
-
-
-       if (mode === 'enc') {
-           encForm.style.display = 'block';
-           decForm.style.display = 'none';
-           btnEnc.className = 'btn';
-           btnDec.className = 'btn btn-secondary';
-       } else {
-           encForm.style.display = 'none';
-           decForm.style.display = 'block';
-           btnEnc.className = 'btn btn-secondary';
-           btnDec.className = 'btn';
-       }
-   }
-
-
-   // Função para derivar chave usando PBKDF2
-   async function getCryptoKey(senha, salt) {
-       const enc = new TextEncoder();
-       const keyMaterial = await crypto.subtle.importKey(
-           "raw", enc.encode(senha), "PBKDF2", false, ["deriveKey"]
-       );
-       return crypto.subtle.deriveKey(
-           {
-               name: "PBKDF2",
-               salt: salt,
-               iterations: 200000,
-               hash: "SHA-256"
-           },
-           keyMaterial,
-           { name: "AES-GCM", length: 256 },
-           false,
-           ["encrypt", "decrypt"]
-       );
-   }
-
-
-   async function executarCriptografia() {
-       const msg = document.getElementById('msg-encrypt').value;
-       const senha = document.getElementById('pass-encrypt').value;
-       const resBox = document.getElementById('vault-result');
-
-
-       if (!msg || !senha) {
-           alert('Preencha a mensagem e a senha.');
-           return;
-       }
-
-
-       try {
-           const salt = crypto.getRandomValues(new Uint8Array(16));
-           const iv = crypto.getRandomValues(new Uint8Array(12));
-           const key = await getCryptoKey(senha, salt);
-
-
-           const enc = new TextEncoder();
-           const encryptedContent = await crypto.subtle.encrypt(
-               { name: "AES-GCM", iv: iv },
-               key,
-               enc.encode(msg)
-           );
-
-
-           // Juntando Salt (16b) + IV (12b) + Dados Criptografados
-           const packageBuffer = new Uint8Array(salt.length + iv.length + encryptedContent.byteLength);
-           packageBuffer.set(salt, 0);
-           packageBuffer.set(iv, salt.length);
-           packageBuffer.set(new Uint8Array(encryptedContent), salt.length + iv.length);
-
-
-           // Converter para Base64
-           const base64String = btoa(String.fromCharCode(...packageBuffer));
-          
-           resBox.style.display = 'block';
-           resBox.innerHTML = `<strong>Código Criptografado Gerado:</strong><br>${base64String}`;
-       } catch (e) {
-           alert("Erro ao criptografar: " + e.message);
-       }
-   }
-
-
-   async function executarDescriptografia() {
-       const code = document.getElementById('code-decrypt').value.trim();
-       const senha = document.getElementById('pass-decrypt').value;
-       const resBox = document.getElementById('vault-result');
-
-
-       if (!code || !senha) {
-           alert('Preencha o código e a senha.');
-           return;
-       }
-
-
-       try {
-           const strData = atob(code);
-           const packageBuffer = new Uint8Array(strData.length);
-           for (let i = 0; i < strData.length; i++) {
-               packageBuffer[i] = strData.charCodeAt(i);
-           }
-
-
-           if (packageBuffer.length < 28) {
-               resBox.style.display = 'block';
-               resBox.innerHTML = "Código inválido.";
-               return;
-           }
-
-
-           const salt = packageBuffer.slice(0, 16);
-           const iv = packageBuffer.slice(16, 28);
-           const data = packageBuffer.slice(28);
-
-
-           const key = await getCryptoKey(senha, salt);
-
-
-           const decryptedContent = await crypto.subtle.decrypt(
-               { name: "AES-GCM", iv: iv },
-               key,
-               data
-           );
-
-
-           const dec = new TextDecoder();
-           resBox.style.display = 'block';
-           resBox.innerHTML = `<strong>Mensagem Descriptografada:</strong><br>${dec.decode(decryptedContent)}`;
-       } catch (e) {
-           resBox.style.display = 'block';
-           resBox.innerHTML = "<span style='color: var(--danger);'>Senha incorreta ou código alterado/inválido.</span>";
-       }
-   }
-
-
-   // ==========================================
-   // ATIVIDADE 2 - ENGENHARIA DE PROMPT
-   // ==========================================
-   function gerarPrompt() {
-       const texto = document.getElementById('prompt-text').value.trim();
-       const tipo = document.getElementById('prompt-type').value;
-       const resBox = document.getElementById('prompt-result');
-       const output = document.getElementById('prompt-output');
-
-
-       if (!texto) {
-           alert('Por favor, insira o texto a ser simplificado.');
-           return;
-       }
-
-
-       let prompt = "";
-       if (tipo === "1") {
-           prompt = "Simplifique este texto usando palavras fáceis:\n" + texto;
-       } else {
-           prompt = "Você é um assistente especializado em acessibilidade. " +
-                    "Reescreva o texto abaixo para facilitar a leitura. " +
-                    "Use palavras simples e frases curtas. " +
-                    "Explique termos difíceis, organize as informações em tópicos e preserve o significado original. " +
-                    "Não invente informações.\n\nTexto:\n" + texto;
-       }
-
-
-       output.textContent = prompt;
-       resBox.style.display = 'block';
-   }
-
-
-   function copiarPrompt() {
-       const text = document.getElementById('prompt-output').textContent;
-       navigator.clipboard.writeText(text).then(() => {
-           alert("Prompt copiado para a área de transferência!");
-       });
-   }
-
-
-   // ==========================================
-   // ATIVIDADE 3 - CALCULADORA NUTRICIONAL
-   // ==========================================
-   const alimentos = {
-       "arroz cozido": { calorias: 130, proteinas: 2.7, carboidratos: 28.2, gorduras: 0.3, fibras: 1.6 },
-       "feijao cozido": { calorias: 76, proteinas: 4.8, carboidratos: 13.6, gorduras: 0.5, fibras: 8.5 },
-       "frango grelhado": { calorias: 165, proteinas: 31, carboidratos: 0, gorduras: 3.6, fibras: 0 },
-       "ovo cozido": { calorias: 155, proteinas: 13, carboidratos: 1.1, gorduras: 11, fibras: 0 },
-       "banana": { calorias: 89, proteinas: 1.1, carboidratos: 22.8, gorduras: 0.3, fibras: 2.6 },
-       "aveia": { calorias: 389, proteinas: 16.9, carboidratos: 66.3, gorduras: 6.9, fibras: 10.6 }
-   };
-
-
-   let carrinho = [];
-
-
-   function carregarSelectAlimentos() {
-       const select = document.getElementById('alimento-select');
-       select.innerHTML = '';
-       for (let key in alimentos) {
-           let opt = document.createElement('option');
-           opt.value = key;
-           opt.textContent = key.charAt(0).toUpperCase() + key.slice(1);
-           select.appendChild(opt);
-       }
-   }
-
-
-   function adicionarAlimento() {
-       const key = document.getElementById('alimento-select').value;
-       const qtd = parseFloat(document.getElementById('alimento-qtd').value);
-
-
-       if (isNaN(qtd) || qtd <= 0) {
-           alert('Digite uma quantidade válida.');
-           return;
-       }
-
-
-       carrinho.push({ nome: key, qtd: qtd });
-       atualizarTabelaNutricional();
-   }
-
-
-   function removerAlimento(index) {
-       carrinho.splice(index, 1);
-       atualizarTabelaNutricional();
-   }
-
-
-   function atualizarTabelaNutricional() {
-       const tbody = document.getElementById('lista-alimentos');
-       tbody.innerHTML = '';
-
-
-       let totais = { calorias: 0, proteinas: 0, carboidratos: 0, gorduras: 0, fibras: 0 };
-
-
-       if (carrinho.length === 0) {
-           tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: #94a3b8;">Nenhum alimento adicionado.</td></tr>';
-       } else {
-           carrinho.forEach((item, idx) => {
-               const dados = alimentos[item.nome];
-               const fator = item.qtd / 100;
-
-
-               const cals = dados.calorias * fator;
-               totais.calorias += cals;
-               totais.proteinas += dados.proteinas * fator;
-               totais.carboidratos += dados.carboidratos * fator;
-               totais.gorduras += dados.gorduras * fator;
-               totais.fibras += dados.fibras * fator;
-
-
-               const tr = document.createElement('tr');
-               tr.innerHTML = `
-                   <td>${item.nome.charAt(0).toUpperCase() + item.nome.slice(1)}</td>
-                   <td>${item.qtd}g</td>
-                   <td>${cals.toFixed(1)} kcal</td>
-                   <td><button class="btn btn-danger" style="padding: 4px 8px; font-size: 0.8rem;" onclick="removerAlimento(${idx})">Remover</button></td>
-               `;
-               tbody.appendChild(tr);
-           });
-       }
-
-
-       document.getElementById('tot-calorias').textContent = totais.calorias.toFixed(1) + ' kcal';
-       document.getElementById('tot-proteinas').textContent = totais.proteinas.toFixed(1) + ' g';
-       document.getElementById('tot-carboidratos').textContent = totais.carboidratos.toFixed(1) + ' g';
-       document.getElementById('tot-gorduras').textContent = totais.gorduras.toFixed(1) + ' g';
-       document.getElementById('tot-fibras').textContent = totais.fibras.toFixed(1) + ' g';
-   }
-
-
-   // Inicialização
-   carregarSelectAlimentos();
-</script>
-
-
-</body>
-</html>
+    <header>
+        <h1>PROJETO: TECNOLOGIA, ÉTICA E SAÚDE</h1>
+        <p>Projeto Integrador desenvolvido de forma interativa para a Web</p>
+    </header>
+
+    <nav class="menu-nav">
+        <button class="btn-nav active" onclick="switchTab('cofre')">1 - Cofre Digital</button>
+        <button class="btn-nav" onclick="switchTab('prompt')">2 - Engenharia de Prompt</button>
+        <button class="btn-nav" onclick="switchTab('nutri')">3 - Calculadora Nutricional</button>
+    </nav>
+
+    <main class="container">
+        
+        <!-- ATIVIDADE 1: COFRE DIGITAL -->
+        <section id="cofre" class="card active">
+            <h2>🔐 Atividade 1 - Cofre Digital</h2>
+            <div class="form-group">
+                <label for="cofre-acao">O que deseja fazer?</label>
+                <select id="cofre-acao" onchange="toggleCofreInputs()">
+                    <option value="cripto">Criptografar mensagem</option>
+                    <option value="descripto">Descriptografar mensagem</option>
+                </select>
+            </div>
+
+            <div id="group-mensagem" class="form-group">
+                <label for="cofre-mensagem">Mensagem:</label>
+                <textarea id="cofre-mensagem" placeholder="Digite sua mensagem secreta aqui..."></textarea>
+            </div>
+
+            <div id="group-codigo" class="form-group" style="display: none;">
+                <label for="cofre-codigo">Código Criptografado:</label>
+                <textarea id="cofre-codigo" placeholder="Cole o código criptografado aqui..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="cofre-senha">Senha:</label>
+                <input type="password" id="cofre-senha" placeholder="Digite a senha">
+            </div>
+
+            <button class="btn-action" onclick="processarCofre()">Processar</button>
+
+            <div id="cofre-resultado-container" style="display: none;">
+                <h3>Resultado:</h3>
+                <div id="cofre-resultado" class="result-box"></div>
+            </div>
+        </section>
+
+        <!-- ATIVIDADE 2: ENGENHARIA DE PROMPT -->
+        <section id="prompt" class="card">
+            <h2>🤖 Atividade 2 - Engenharia de Prompt</h2>
+            <div class="form-group">
+                <label for="prompt-tipo">Tipo de Prompt:</label>
+                <select id="prompt-tipo">
+                    <option value="simples">Criar prompt simples</option>
+                    <option value="detalhado">Criar prompt detalhado</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="prompt-texto">Texto que deseja simplificar:</label>
+                <textarea id="prompt-texto" placeholder="Cole o texto original aqui..."></textarea>
+            </div>
+
+            <button class="btn-action" onclick="gerarPrompt()">Gerar Prompt</button>
+
+            <div id="prompt-resultado-container" style="display: none;">
+                <h3>📋 Prompt Gerado (Copie e envie para uma IA):</h3>
+                <div id="prompt-resultado" class="result-box"></div>
+                <p class="disclaimer">Este módulo prepara instruções, mas não se conecta automaticamente a um modelo de IA.</p>
+            </div>
+        </section>
+
+        <!-- ATIVIDADE 3: CALCULADORA NUTRICIONAL -->
+        <section id="nutri" class="card">
+            <h2>🥗 Atividade 3 - Calculadora Nutricional</h2>
+            <div class="food-list">
+                <strong>Alimentos disponíveis:</strong> Arroz cozido, Feijão cozido, Frango grelhado, Ovo cozido, Banana, Aveia.
+            </div>
+
+            <div class="form-group">
+                <label for="nutri-alimento">Selecione o Alimento:</label>
+                <select id="nutri-alimento">
+                    <option value="arroz cozido">Arroz Cozido</option>
+                    <option value="feijao cozido">Feijão Cozido</option>
+                    <option value="frango grelhado">Frango Grelhado</option>
+                    <option value="ovo cozido">Ovo Cozido</option>
+                    <option value="banana">Banana</option>
+                    <option value="aveia">Aveia</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="nutri-quantidade">Quantidade (gramas):</label>
+                <input type="number" id="nutri-quantidade" min="1" placeholder="Ex: 150">
+            </div>
+
+            <button class="btn-action" onclick="adicionarAlimento()">Adicionar Alimento</button>
+
+            <table class="table-nutri">
+                <thead>
+                    <tr>
+                        <th>Nutriente</th>
+                        <th>Total Acumulado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Calorias</td><td id="total-calorias">0.0 kcal</td></tr>
+                    <tr><td>Proteínas</td><td id="total-proteinas">0.0 g</td></tr>
+                    <tr><td>Carboidratos</td><td id="total-carboidratos">0.0 g</td></tr>
+                    <tr><td>Gorduras</td><td id="total-gorduras">0.0 g</td></tr>
+                    <tr><td>Fibras</td><td id="total-fibras">0.0 g</td></tr>
+                </tbody>
+            </table>
+
+            <button class="btn-action" style="background-color: #64748b; margin-top: 15px;" onclick="limparNutri()">Limpar Tudo</button>
+            <p class="disclaimer">Valores aproximados para fins educativos. O resultado não substitui orientação nutricional.</p>
+        </section>
+
+    </main>
+
+    <script>
+        // --- GERENCIADOR DE ABAS (MENU PRINCIPAL) ---
+        function switchTab(tabId) {
+            document.querySelectorAll('.card').forEach(card => card.classList.remove('active'));
