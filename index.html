@@ -79,12 +79,16 @@
             padding: 24px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             border: 1px solid var(--border);
-            display: none;
             margin-bottom: 30px;
         }
 
-        .card.active {
-            display: block;
+        /* Classes estritas de controle de exibição para corrigir o travamento */
+        .hidden {
+            display: none !important;
+        }
+
+        .visible {
+            display: block !important;
         }
 
         h2 {
@@ -228,7 +232,7 @@
     <main class="container">
         
         <!-- ATIVIDADE 1: COFRE DIGITAL -->
-        <section id="cofre" class="card active">
+        <section id="cofre" class="card visible">
             <h2>🔐 Atividade 1 - Cofre Digital</h2>
             <div class="form-group">
                 <label for="cofre-acao">O que deseja fazer?</label>
@@ -262,7 +266,7 @@
         </section>
 
         <!-- ATIVIDADE 2: ENGENHARIA DE PROMPT -->
-        <section id="prompt" class="card">
+        <section id="prompt" class="card hidden">
             <h2>🤖 Atividade 2 - Engenharia de Prompt</h2>
             <div class="form-group">
                 <label for="prompt-tipo">Tipo de Prompt:</label>
@@ -287,7 +291,7 @@
         </section>
 
         <!-- ATIVIDADE 3: CALCULADORA NUTRICIONAL -->
-        <section id="nutri" class="card">
+        <section id="nutri" class="card hidden">
             <h2>🥗 Atividade 3 - Calculadora Nutricional</h2>
             <div class="food-list">
                 <strong>Alimentos disponíveis:</strong> Arroz cozido, Feijão cozido, Frango grelhado, Ovo cozido, Banana, Aveia.
@@ -310,8 +314,3 @@
                 <input type="number" id="nutri-quantidade" min="1" placeholder="Ex: 150">
             </div>
 
-            <button class="btn-action" onclick="adicionarAlimento()">Adicionar Alimento</button>
-
-            <table class="table-nutri">
-                <thead>
-                    <tr>
