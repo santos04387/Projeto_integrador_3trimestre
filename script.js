@@ -206,3 +206,21 @@ function inicializarCalculadora() {
         renderizarNutri();
     });
 }
+document.addEventListener('DOMContentLoaded', () => {
+    const checkboxes = document.querySelectorAll('.checklist-checkbox');
+    const progressBarFill = document.getElementById('progress-bar-fill');
+    const progressPercentage = document.getElementById('progress-percentage');
+
+    function updateProgress() {
+        const totalItems = checkboxes.length;
+        const checkedItems = document.querySelectorAll('.checklist-checkbox:checked').length;
+        const percentage = Math.round((checkedItems / totalItems) * 100);
+
+        progressBarFill.style.width = `${percentage}%`;
+        progressPercentage.textContent = `${percentage}%`;
+    }
+
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateProgress);
+    });
+});
