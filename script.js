@@ -158,69 +158,22 @@ function inicializarCalculadora() {
                 removerItem(index);
             });
         });
-    }
-
-    function removerItem(index) {
-        const item = itensAdicionados[index];
-        const info = tabelaAlimentos[item.id];
-
-        // Subtrai os macros proporcionalmente
-        totaisNutricionais.calorias -= info.calorias * item.fator;
-        totaisNutricionais.proteinas -= info.proteinas * item.fator;
-        totaisNutricionais.carboidratos -= info.carboidratos * item.fator;
-        totaisNutricionais.gorduras -= info.gorduras * item.fator;
-        totaisNutricionais.fibras -= info.fibras * item.fator;
-
-        itensAdicionados.splice(index, 1);
-        renderizarNutri();
-    }
-
-    btnAdicionar.addEventListener("click", () => {
-        const selectAlimento = document.getElementById("nutri-alimento");
-        const idAlimento = selectAlimento.value;
-        const nomeFormatado = selectAlimento.options[selectAlimento.selectedIndex].text;
-        const qtd = parseFloat(document.getElementById("nutri-qtd").value);
-
-        if (isNaN(qtd) || qtd <= 0) {
-            alert("Digite uma quantidade numérica maior que zero.");
-            return;
-        }
-
-        const fator = qtd / 100;
-        const info = tabelaAlimentos[idAlimento];
-
-        // Soma cumulativa baseada na gramatura
-        totaisNutricionais.calorias += info.calorias * factor = fator;
-        totaisNutricionais.proteinas += info.proteinas * fator;
-        totaisNutricionais.carboidratos += info.carboidratos * fator;
-        totaisNutricionais.gorduras += info.gorduras * fator;
-        totaisNutricionais.fibras += info.fibras * fator;
-
-        itensAdicionados.push({ id: idAlimento, nomeFormatado, quantidade: qtd, fator });
-        renderizarNutri();
-    });
-
-    btnReset.addEventListener("click", () => {
-        totaisNutricionais = { calorias: 0, proteinas: 0, carboidratos: 0, gorduras: 0, fibers = fibras: 0 };
-        itensAdicionados = [];
-        renderizarNutri();
-    });
-}
+  // Script para animações simples de leitura ou interatividade futura
 document.addEventListener('DOMContentLoaded', () => {
-    const checkboxes = document.querySelectorAll('.checklist-checkbox');
-    const progressBarFill = document.getElementById('progress-bar-fill');
-    const progressPercentage = document.getElementById('progress-percentage');
-
-    function updateProgress() {
-        const totalItems = checkboxes.length;
-        const checkedItems = document.querySelectorAll('.checklist-checkbox:checked').length;
-        const percentage = Math.round((checkedItems / totalItems) * 100);
-
-        progressBarFill.style.width = `${percentage}%`;
-        progressPercentage.textContent = `${percentage}%`;
-    }
-
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', updateProgress);
+    const cards = document.querySelectorAll('.recurso-card, .projeto-table tr');
+    
+    // Adiciona um efeito simples de destaque visual ao passar o mouse nos blocos de explicação
+    cards.forEach(card => {
+        card.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
+        
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-2px)';
+            card.style.box-shadow = '0 4px 10px rgba(0,0,0,0.04)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+            card.style.box-shadow = 'none';
+        });
     });
 });

@@ -1,61 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <div class="checklist-container">
-    <h2 class="checklist-title">📋 Checklist de Entrega do Projeto</h2>
-    <p class="checklist-subtitle">Avalie o cumprimento dos critérios obrigatórios antes do envio final:</p>
-    
-    <ul class="checklist-list">
-        <li class="checklist-item">
-            <input type="checkbox" id="item1" class="checklist-checkbox">
-            <label for="item1" class="checklist-label">
-                <strong>Abordagem de Recursos:</strong> Nosso grupo abordou matriz de LEDs, código Morse e display.
-            </label>
-        </li>
-        <li class="checklist-item">
-            <input type="checkbox" id="item2" class="checklist-checkbox">
-            <label for="item2" class="checklist-label">
-                <strong>Funcionamento Técnico:</strong> Explicamos o funcionamento de cada recurso, e não apenas sua definição.
-            </label>
-        </li>
-        <li class="checklist-item">
-            <input type="checkbox" id="item3" class="checklist-checkbox">
-            <label for="item3" class="checklist-label">
-                <strong>Impacto Social:</strong> Incluímos exemplos concretos de uso ligados à acessibilidade e à qualidade de vida.
-            </label>
-        </li>
-        <li class="checklist-item">
-            <input type="checkbox" id="item4" class="checklist-checkbox">
-            <label for="item4" class="checklist-label">
-                <strong>Análise Comparativa:</strong> Comparamos vantagens, limitations e possíveis adaptações.
-            </label>
-        </li>
-        <li class="checklist-item">
-            <input type="checkbox" id="item5" class="checklist-checkbox">
-            <label for="item5" class="checklist-label">
-                <strong>Uso de IA:</strong> Registramos e avaliamos criticamente o uso da inteligência artificial no processo.
-            </label>
-        </li>
-        <li class="checklist-item">
-            <input type="checkbox" id="item6" class="checklist-checkbox">
-            <label for="item6" class="checklist-label">
-                <strong>Fechamento do Projeto:</strong> Incluímos uma proposta de melhoria e uma conclusão que responde à questão motriz.
-            </label>
-        </li>
-        <li class="checklist-item">
-            <input type="checkbox" id="item7" class="checklist-checkbox">
-            <label for="item7" class="checklist-label">
-                <strong>Revisão e Créditos:</strong> Revisamos a escrita, organizamos o material e identificamos todas as fontes e créditos.
-            </label>
-        </li>
-    </ul>
-
-    <div class="progress-bar-container">
-        <div class="progress-bar-text">Progresso da Autoavaliação: <span id="progress-percentage">0%</span></div>
-        <div class="progress-bar-bg">
-            <div id="progress-bar-fill" class="progress-bar-fill"></div>
-        </div>
-    </div>
 </div>
 
     <meta charset="UTF-8">
@@ -177,3 +122,107 @@
 
 </body>
 </html>
+<div class="projeto-container">
+    <header class="projeto-header">
+        <h1>Relatório Técnico e Avaliação do Projeto</h1>
+        <p class="projeto-sub">Análise de recursos de hardware, acessibilidade e documentação de desenvolvimento.</p>
+    </header>
+
+    <!-- 1. ABORDAGEM DOS RECURSOS E FUNCIONAMENTO TÉCNICO -->
+    <section class="projeto-section">
+        <h2>1. Recursos Tecnológicos e Funcionamento Técnico</h2>
+        
+        <div class="recurso-card">
+            <h3>🔹 Matriz de LEDs</h3>
+            <p><strong>Funcionamento:</strong> Uma matriz de LEDs organiza os diodos em linhas e colunas eletricamente conectadas. Em vez de controlar cada LED individualmente (o que exigiria muitos pinos do microcontrolador), utiliza-se uma técnica chamada <em>multiplexação</em>. Ao ativar uma linha específica e enviar energia para colunas específicas em uma velocidade extremamente rápida (invisível ao olho humano devido à persistência da visão), conseguimos desenhar letras, números e gráficos complexos na tela utilizando poucos pinos de controle.</p>
+        </div>
+
+        <div class="recurso-card">
+            <h3>🔹 Código Morse</h3>
+            <p><strong>Funcionamento:</strong> É um sistema de codificação de caracteres que traduz letras, números e sinais de pontuação em sequências de pulsos intermitentes. Esses pulsos são divididos em dois tipos de duração: pontos (sinais curtos) e traços (sinais longos, que equivalem a três vezes a duração de um ponto). Tecnicamente, em sistemas embarcados, o código é gerado controlando o tempo em nível alto (ligado) e nível baixo (desligado) de uma porta digital conectada a um buzzer (som) ou a um LED (luz).</p>
+        </div>
+
+        <div class="recurso-card">
+            <h3>🔹 Display (LCD / OLED)</h3>
+            <p><strong>Funcionamento:</strong> Os displays servem para exibir informações de forma alfanumérica ou gráfica. Um display LCD comum (como o 16x2), por exemplo, funciona controlando cristais líquidos através de campos elétricos que bloqueiam ou permitem a passagem da luz de fundo (backlight). Já os displays OLED iluminam cada pixel individualmente. Para poupar pinos do microcontrolador, esses módulos geralmente utilizam protocolos de comunicação como I2C ou SPI, permitindo enviar textos inteiros usando apenas dois ou três fios de dados.</p>
+        </div>
+    </section>
+
+    <!-- 2. COMPARAÇÃO E ANÁLISE -->
+    <section class="projeto-section">
+        <h2>2. Análise Comparativa das Tecnologias</h2>
+        <div class="tabela-responsiva">
+            <table class="projeto-table">
+                <thead>
+                    <tr>
+                        <th>Recurso</th>
+                        <th>Vantagens</th>
+                        <th>Limitações</th>
+                        <th>Possíveis Adaptações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Matriz de LEDs</strong></td>
+                        <td>Alta visibilidade e excelente para animações simples ou setas indicativas.</td>
+                        <td>Resolução baixa para textos longos e alto consumo se muitos LEDs ligarem juntos.</td>
+                        <td>Pode ser expandida em cascata para criar letreiros dinâmicos maiores.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Código Morse</strong></td>
+                        <td>Extremamente resiliente, funciona com hardware mínimo (apenas 1 pino de saída).</td>
+                        <td>Exige aprendizado prévio do usuário para decodificar a mensagem recebida.</td>
+                        <td>Pode ser traduzido em vibração por motores de feedback háptico.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Display</strong></td>
+                        <td>Exibe dados complexos, leituras de sensores e textos longos com clareza.</td>
+                        <td>Telas menores exigem proximidade visual e são sensíveis a impactos.</td>
+                        <td>Uso de interfaces de alto contraste ou retroiluminação ajustável para ambientes escuros.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 3. ACESSIBILIDADE E QUALIDADE DE VIDA -->
+    <section class="projeto-section">
+        <h2>3. Aplicações em Acessibilidade e Qualidade de Vida</h2>
+        <div class="recurso-card">
+            <p>A integração desses três componentes cria soluções poderosas para a inclusão social:</p>
+            <ul>
+                <li><strong>Sinalização Industrial e Urbana Adaptada:</strong> Matrizes de LED podem exibir setas direcionais e alertas visuais para pessoas com deficiência auditiva em ambientes barulhentos.</li>
+                <li><strong>Comunicação Assistiva Alternativa:</strong> O Código Morse permite que pessoas com severas limitações motoras (como portadores de esclerose lateral amiotrófica) se comuniquem piscando os olhos ou aplicando pequenas pressões em um sensor, enviando mensagens diretamente para um display.</li>
+                <li><strong>Autonomia Doméstica:</strong> Displays com letras ampliadas e alarmes sonoros em Morse ajudam idosos a monitorar se eletrodomésticos foram deixados ligados ou a identificar notificações de emergência pela casa.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 4. USO DA IA -->
+    <section class="projeto-section">
+        <h2>4. Registro e Avaliação Crítica do Uso da IA</h2>
+        <div class="recurso-card">
+            <p><strong>Registro de Uso:</strong> A Inteligência Artificial foi utilizada como ferramenta de suporte durante o desenvolvimento para a estruturação semântica do código, revisão das descrições físicas de multiplexação de hardware e formatação do design de interface.</p>
+            <p><strong>Análise Crítica:</strong> A IA se provou altamente eficiente na aceleração do design e na síntese de conceitos. No entanto, cabe destacar a necessidade de supervisão humana constante, uma vez que a IA tende a gerar soluções genéricas se não for alimentada com prompts contextualizados, exigindo refinamento manual para garantir a precisão técnica das ligações de hardware.</p>
+        </div>
+    </section>
+
+    <!-- 5. MELHORIAS E CONCLUSÃO -->
+    <section class="projeto-section">
+        <h2>5. Propostas de Melhoria e Conclusão</h2>
+        <div class="recurso-card">
+            <h3>🚀 Proposta de Melhoria</h3>
+            <p>Para iterações futuras do projeto, propõe-se a integração de um módulo de comunicação sem fio (como Bluetooth ou Wi-Fi) acoplado ao microcontrolador. Isso permitiria que as mensagens geradas via código Morse ou exibidas nos displays fossem espelhadas em tempo real em um aplicativo de smartphone, expandindo o alcance da acessibilidade para cuidadores e familiares a distância.</p>
+        </div>
+        <div class="recurso-card">
+            <h3>🎯 Conclusão (Resposta à Questão Motriz)</h3>
+            <p>A aplicação combinada de matrizes de LED, código Morse e displays prova que soluções de engenharia acessíveis e de baixo custo são viáveis para mitigar barreiras de comunicação. Ao traduzir sinais elétricos simples em estímulos visuais e sonoros inteligíveis, o projeto cumpre seu papel central de demonstrar como a tecnologia de automação e eletrônica pode — e deve — ser projetada para promover a dignidade, a autonomia e a melhoria direta da qualidade de vida de pessoas com vulnerabilidades ou deficiências.</p>
+        </div>
+    </section>
+
+    <!-- 6. FONTES E CRÉDITOS -->
+    <footer class="projeto-footer">
+        <p><strong>Fontes consultadas:</strong> Documentação oficial do Arduino, Manuais de displays I2C/OLED Adafruit, Diretrizes de Acessibilidade Web (WCAG) e Protocolos de Codificação Internacional de Sinais.</p>
+        <p class="creditos">© 2026 - Desenvolvido pelo Grupo de Engenharia e Tecnologia Assistiva.</p>
+    </footer>
+</div>
