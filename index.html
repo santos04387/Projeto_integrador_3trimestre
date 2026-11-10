@@ -3,579 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tecnologia, Robótica e Acessibilidade - Projeto Integrador</title>
-    <style>
-        :root {
-            --primary-color: #1a365d;
-            --secondary-color: #2b6cb0;
-            --accent-color: #319795;
-            --bg-color: #f7fafc;
-            --text-color: #2d3748;
-            --card-bg: #ffffff;
-            --border-color: #cbd5e0;
-            --code-bg: #1a202c;
-            --code-text: #f7fafc;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            padding: 0;
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 3rem 1rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            font-size: 2.3rem;
-            margin-bottom: 1rem;
-        }
-
-        header p {
-            font-size: 1.1rem;
-            font-weight: 300;
-        }
-
-        .group-members {
-            margin-top: 1rem;
-            font-size: 0.95rem;
-            color: #e2e8f0;
-            font-style: italic;
-        }
-
-        nav {
-            background-color: var(--secondary-color);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            padding: 1rem 1.2rem;
-            font-weight: bold;
-            font-size: 0.9rem;
-            transition: background 0.3s;
-        }
-
-        nav a:hover {
-            background-color: var(--primary-color);
-        }
-
-        main {
-            max-width: 1000px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-        }
-
-        section {
-            background-color: var(--card-bg);
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        h2 {
-            color: var(--primary-color);
-            border-bottom: 3px solid var(--accent-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-        }
-
-        h3 {
-            color: var(--secondary-color);
-            margin: 1.5rem 0 0.5rem 0;
-            font-size: 1.3rem;
-        }
-
-        p {
-            margin-bottom: 1rem;
-            text-align: justify;
-        }
-
-        ul, ol {
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-        }
-
-        li {
-            margin-bottom: 0.5rem;
-        }
-
-        .highlight-box {
-            background-color: #ebf8fa;
-            border-left: 5px solid var(--accent-color);
-            padding: 1.2rem;
-            margin: 1.5rem 0;
-            border-radius: 0 4px 4px 0;
-        }
-
-        .project-image {
-            width: 100%;
-            max-width: 650px;
-            height: auto;
-            display: block;
-            margin: 1.5rem auto;
-            border: 2px dashed var(--border-color);
-            border-radius: 4px;
-            background-color: #f7fafc;
-        }
-
-        .image-caption {
-            text-align: center;
-            font-size: 0.9rem;
-            color: #718096;
-            margin-top: -1rem;
-            margin-bottom: 1.5rem;
-            font-style: italic;
-        }
-
-        .table-container {
-            overflow-x: auto;
-            margin: 1.5rem 0;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border: 1px solid #e2e8f0;
-            vertical-align: top;
-        }
-
-        th {
-            background-color: var(--primary-color);
-            color: white;
-            font-weight: bold;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f8fafc;
-        }
-
-        pre {
-            background-color: var(--code-bg);
-            color: var(--code-text);
-            padding: 1.5rem;
-            border-radius: 6px;
-            overflow-x: auto;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.88rem;
-            max-height: 450px;
-            border: 1px solid #4a5568;
-            margin: 1.5rem 0;
-        }
-
-        code {
-            display: block;
-            white-space: pre;
-        }
-
-        footer {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 2rem 1rem;
-            margin-top: 4rem;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            header h1 { font-size: 1.8rem; }
-            section { padding: 1.5rem; }
-            nav ul { flex-direction: column; text-align: center; }
-            nav a { padding: 0.75rem; }
-        }
-    </style>
+    <title>Projeto: Tecnologia, Ética e Saúde</title>
+    <!-- Vinculação do CSS Externo -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Biblioteca CryptoJS para Criptografia de alta segurança -->
+    <script src="https://cloudflare.com" defer></script>
+    <!-- Vinculação do JavaScript Externo -->
+    <script src="script.js" defer></script>
 </head>
 <body>
 
+<div class="container">
     <header>
-        <h1>Conectando Sentidos: Robótica e Inteligência Artificial na Acessibilidade</h1>
-        <p>Projeto Integrador: Inteligência Artificial e Tecnologias • 3º Trimestre</p>
-        <div class="group-members">Integrantes do Grupo: [Nome 1], [Nome 2], [Nome 3] e [Nome 4]</div>
+        <h1>PROJETO: TECNOLOGIA, ÉTICA E SAÚDE</h1>
+        <p class="subtitle">Painel Integrador</p>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#introducao">1. Introdução</a></li>
-            <li><a href="#matriz">2. Matriz de LEDs</a></li>
-            <li><a href="#morse">3. Código Morse</a></li>
-            <li><a href="#display">4. Display</a></li>
-            <li><a href="#comparativo">5. Tabela Comparativa</a></li>
-            <li><a href="#situacao">6. Situação Real</a></li>
-            <li><a href="#python-app">7. Módulo Python</a></li>
-            <li><a href="#ia">8. Uso da IA</a></li>
-            <li><a href="#melhoria">9. Proposta de Melhoria</a></li>
-            <li><a href="#conclusao">10. Conclusão e Fontes</a></li>
-        </ul>
+    <nav class="nav-tabs">
+        <button class="tab-btn active" data-tab="cofre">1 - Cofre Digital</button>
+        <button class="tab-btn" data-tab="prompt">2 - Engenharia de Prompt</button>
+        <button class="tab-btn" data-tab="nutri">3 - Calculadora Nutricional</button>
     </nav>
 
-    <main>
-        <!-- 1. INTRODUÇÃO -->
-        <section id="introducao">
-            <h2>1. Introdução: Acessibilidade, Comunicação e Qualidade de Vida</h2>
-            <p><strong>Acessibilidade:</strong> Significa quebrar as barreiras arquitetônicas, digitais e comunicacionais para garantir que qualquer indivíduo possa interagir com o mundo de forma autônoma e segura, independentemente de suas condições físicas ou cognitivas.</p>
-            <p><strong>Comunicação:</strong> É a base da conexão humana. Ela ocorre quando uma informação é transmitida, recebida e compreendida com clareza por todas as partes envolvidas.</p>
-            <p><strong>Qualidade de Vida:</strong> Está diretamente ligada à dignidade e à independência. Dispor de canais funcionais para se expressar e compreender o ambiente eleva a autoestima e garante a inclusão social.</p>
-            
-            <div class="highlight-box">
-                <strong>Barreira Comunicacional Concreta:</strong> Imagine uma estação ferroviária movimentada onde as atualizações sobre plataformas e atrasos urgentes acontecem exclusivamente via alto-falantes (som). Um passageiro com deficiência auditiva severa ficará completamente desinformado, exposto ao risco de perder o transporte ou de se deslocar para áreas inseguras.
+    <!-- ATIVIDADE 1 - COFRE DIGITAL -->
+    <section id="cofre" class="panel active">
+        <h2>🔒 Atividade 1 - Cofre Digital (Criptografia)</h2>
+        <div class="form-group">
+            <label for="cofre-modo">Ação:</label>
+            <select id="cofre-modo">
+                <option value="criptografar">Criptografar Mensagem</option>
+                <option value="descriptografar">Descriptografar Código</option>
+            </select>
+        </div>
+        
+        <div class="form-group" id="grupo-mensagem">
+            <label for="cofre-mensagem">Mensagem Original:</label>
+            <textarea id="cofre-mensagem" rows="3" placeholder="Digite sua mensagem secreta..."></textarea>
+        </div>
+
+        <div class="form-group" id="grupo-codigo" class="hidden">
+            <label for="cofre-codigo">Código Criptografado:</label>
+            <textarea id="cofre-codigo" rows="3" placeholder="Cole o código criptografado aqui..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="cofre-senha">Senha:</label>
+            <input type="password" id="cofre-senha" placeholder="Digite a chave secreta...">
+        </div>
+
+        <button class="action-btn" id="btn-cofre">Executar</button>
+
+        <div id="cofre-resultado" class="output-box hidden"></div>
+    </section>
+
+    <!-- ATIVIDADE 2 - ENGENHARIA DE PROMPT -->
+    <section id="prompt" class="panel">
+        <h2>🤖 Atividade 2 - Inteligência Artificial (Prompts)</h2>
+        <div class="form-group">
+            <label for="prompt-tipo">Tipo de Prompt:</label>
+            <select id="prompt-tipo">
+                <option value="1">Prompt Simples</option>
+                <option value="2">Prompt Detalhado (Acessibilidade)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="prompt-texto">Texto que deseja simplificar:</label>
+            <textarea id="prompt-texto" rows="4" placeholder="Insira o texto complexo aqui..."></textarea>
+        </div>
+        <button class="action-btn" id="btn-prompt">Gerar Instrução</button>
+
+        <div id="prompt-resultado" class="output-box hidden"></div>
+        <p class="disclaimer">Este módulo prepara instruções estruturadas, mas não se conecta automaticamente a um modelo de IA.</p>
+    </section>
+
+    <!-- ATIVIDADE 3 - CALCULADORA NUTRICIONAL -->
+    <section id="nutri" class="panel">
+        <h2>🍎 Atividade 3 - Calculadora Nutricional</h2>
+        <div class="nutri-layout">
+            <div class="nutri-controls">
+                <div class="form-group">
+                    <label for="nutri-alimento">Escolha o Alimento:</label>
+                    <select id="nutri-alimento">
+                        <option value="arroz cozido">Arroz Cozido</option>
+                        <option value="feijao cozido">Feijão Cozido</option>
+                        <option value="frango grelhado">Frango Grelhado</option>
+                        <option value="ovo cozido">Ovo Cozido</option>
+                        <option value="banana">Banana</option>
+                        <option value="aveia">Aveia</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="nutri-qtd">Quantidade (gramas):</label>
+                    <input type="number" id="nutri-qtd" min="1" value="100">
+                </div>
+                <button class="action-btn" id="btn-adicionar-nutri">Adicionar ao Prato</button>
+                
+                <h3>Itens no Prato Atual:</h3>
+                <ul id="lista-refeicao" class="added-items"></ul>
             </div>
 
-            <h3>Nossa Investigação</h3>
-            <p>Este trabalho investiga como as ferramentas de robótica — Matriz de LEDs, Código Morse e Displays — atuam como canais de comunicação redundantes. Nossa meta, alinhada à <strong>questão motriz</strong> do trimestre, é analisar como esses hardwares traduzem dados em estímulos visuais e sonoros capazes de contornar limitações biológicas, devolvendo autonomia aos indivíduos.</p>
-        </section>
-
-        <!-- 2. MATRIZ DE LEDS -->
-        <section id="matriz">
-            <h2>2. Matriz de LEDs</h2>
-            <p>A <strong>matriz de LEDs</strong> é um arranjo retangular composto por diodos luminosos organizados em linhas e colunas (frequentemente no formato 8x8). A formação de imagens se dá por um processo chamado multiplexação eletrônica: o controlador ativa uma linha de cada vez enquanto alimenta as colunas corretas. Essa varredura ocorre de maneira tão rápida que o olho humano não percebe as piscadas individuais, gerando a ilusão de um caractere ou ícone estático contínuo.</p>
-            
-            <h3>Símbolos para Comunicação</h3>
-            <p>A matriz destaca-se pelo uso de símbolos gráficos universais de assimilação imediata:</p>
-            <ul>
-                <li><strong>Atenção/Perigo:</strong> Um sinal luminoso em formato de triângulo de exclamação.</li>
-                <li><strong>Ajuda:</strong> Exibição do sinal "SOS" ou um caractere de interrogação (?).</li>
-                <li><strong>Direcionamento:</strong> Setas animadas indicando caminhos de fluxo de pessoas (←, →).</li>
-                <li><strong>Estados Emocionais:</strong> Expressões faciais pixeladas para expressar dor, desconforto ou bem-estar.</li>
-            </ul>
-
-            <div class="highlight-box">
-                <strong>Cenário Prático:</strong> Em ambientes com poluição sonora extrema (fábricas ou obras urbanas), a instalação de matrizes de LEDs de alta intensidade permite emitir alertas visuais de evacuação instantâneos para toda a equipe, protegendo a integridade dos trabalhadores sem depender de sirenes de áudio.
+            <div class="nutri-results">
+                <h3>Resumo Nutricional Acumulado</h3>
+                <div id="nutri-totais" class="output-box layout-nutri-box">
+                    Calorias: 0.0 kcal<br>
+                    Proteínas: 0.0 g<br>
+                    Carboidratos: 0.0 g<br>
+                    Gorduras: 0.0 g<br>
+                    Fibras: 0.0 g
+                </div>
+                <button class="action-btn reset-btn" id="btn-reset-nutri">Resetar Calculadora</button>
+                <p class="disclaimer">Valores aproximados para fins educativos. O resultado não substitui orientação profissional.</p>
             </div>
+        </div>
+    </section>
+</div>
 
-            <h3>Vantagens e Limitações</h3>
-            <ul>
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto: Tecnologia, Ética e Saúde</title>
-    <style>
-        :root {
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --bg: #f8fafc;
-            --card-bg: #ffffff;
-            --text: #1e293b;
-            --text-light: #64748b;
-            --border: #e2e8f0;
-            --success: #16a34a;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            max-width: 600px;
-        }
-
-        header h1 {
-            color: var(--primary);
-            font-size: 2rem;
-            margin-bottom: 8px;
-        }
-
-        header p {
-            color: var(--text-light);
-        }
-
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            width: 100%;
-            max-width: 700px;
-        }
-
-        .tab-btn {
-            flex: 1;
-            padding: 12px;
-            background: var(--border);
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            color: var(--text);
-            transition: all 0.2s;
-        }
-
-        .tab-btn.active {
-            background: var(--primary);
-            color: white;
-        }
-
-        .container {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-            width: 100%;
-            max-width: 700px;
-        }
-
-        .content-section {
-            display: none;
-        }
-
-        .content-section.active {
-            display: block;
-        }
-
-        h2 {
-            margin-bottom: 20px;
-            color: var(--text);
-            font-size: 1.5rem;
-            border-bottom: 2px solid var(--border);
-            padding-bottom: 8px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: 500;
-            font-size: 0.95rem;
-        }
-
-        input, textarea, select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            font-size: 1rem;
-            background: #fff;
-        }
-
-        input:focus, textarea:focus {
-            outline: 2px solid var(--primary);
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        button.action-btn {
-            padding: 10px 20px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: background 0.2s;
-        }
-
-        button.action-btn:hover {
-            background: var(--primary-hover);
-        }
-
-        button.secondary-btn {
-            background: #64748b;
-        }
-        button.secondary-btn:hover {
-            background: #475569;
-        }
-
-        .result-box {
-            margin-top: 20px;
-            padding: 15px;
-            background: #f1f5f9;
-            border-radius: 6px;
-            border-left: 4px solid var(--primary);
-            white-space: pre-wrap;
-            word-break: break-all;
-        }
-
-        .food-list {
-            margin-bottom: 15px;
-            max-height: 150px;
-            overflow-y: auto;
-            border: 1px solid var(--border);
-            padding: 10px;
-            border-radius: 6px;
-            background: #fafafa;
-        }
-
-        .summary-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .summary-card {
-            background: #f8fafc;
-            padding: 12px;
-            border-radius: 8px;
-            text-align: center;
-            border: 1px solid var(--border);
-        }
-
-        .summary-card .val {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: var(--primary);
-        }
-
-        .info-disclaimer {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            margin-top: 15px;
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>PROJETO INTEGRADOR</h1>
-        <p>Tecnologia, Ética e Saúde</p>
-    </header>
-
-    <div class="tabs">
-        <button class="tab-btn active" onclick="switchTab('cofre')">1 - Cofre Digital</button>
-        <button class="tab-btn" onclick="switchTab('prompt')">2 - Engenharia de Prompt</button>
-        <button class="tab-btn" onclick="switchTab('nutri')">3 - Calc. Nutricional</button>
-    </div>
-
-    <div class="container">
-        <!-- ATIVIDADE 1: COFRE DIGITAL -->
-        <section id="cofre" class="content-section active">
-            <h2>Cofre Digital (Criptografia)</h2>
-            <div class="form-group">
-                <label for="cofre-mensagem">Mensagem / Código Criptografado:</label>
-                <textarea id="cofre-mensagem" rows="4" placeholder="Digite o texto normal para criptografar OU cole o código para descriptografar..."></textarea>
-            </div>
-            <div class="form-group">
-                <label for="cofre-senha">Senha:</label>
-                <input type="password" id="cofre-senha" placeholder="Digite a chave secreta">
-            </div>
-            <div class="btn-group">
-                <button class="action-btn" onclick="executarCriptografia(true)">Criptografar</button>
-                <button class="action-btn secondary-btn" onclick="executarCriptografia(false)">Descriptografar</button>
-            </div>
-            <div id="cofre-resultado" class="result-box" style="display:none;"></div>
-        </section>
-
-        <!-- ATIVIDADE 2: ENGENHARIA DE PROMPT -->
-        <section id="prompt" class="content-section">
-            <h2>Engenharia de Prompt</h2>
-            <div class="form-group">
-                <label for="prompt-texto">Texto que deseja simplificar:</label>
-                <textarea id="prompt-texto" rows="4" placeholder="Cole o texto complexo aqui..."></textarea>
-            </div>
-            <div class="form-group">
-                <label for="prompt-tipo">Tipo de Prompt:</label>
-                <select id="prompt-tipo">
-                    <option value="simples">Prompt Simples</option>
-                    <option value="detalhado">Prompt Detalhado (Especialista em Acessibilidade)</option>
-                </select>
-            </div>
-            <div class="btn-group">
-                <button class="action-btn" onclick="gerarPrompt()">Gerar Prompt</button>
-            </div>
-            <div id="prompt-resultado" class="result-box" style="display:none;"></div>
-        </section>
-
-        <!-- ATIVIDADE 3: CALCULADORA NUTRICIONAL -->
-        <section id="nutri" class="content-section">
-            <h2>Calculadora Nutricional</h2>
-            <label>Alimentos Disponíveis:</label>
-            <div class="food-list" id="lista-alimentos-display"></div>
-            
-            <div class="form-group">
-                <label for="nutri-alimento">Selecionar Alimento:</label>
-                <select id="nutri-alimento"></select>
-            </div>
-            <div class="form-group">
-                <label for="nutri-qtd">Quantidade (em gramas):</label>
-                <input type="number" id="nutri-qtd" min="1" value="100">
-            </div>
-            <div class="btn-group">
-                <button class="action-btn" onclick="adicionarAlimento()">Adicionar Alimento</button>
-                <button class="action-btn secondary-btn" onclick="limparCalculadora()">Resetar</button>
-            </div>
-
-            <div class="summary-grid">
-                <div class="summary-card"><p>Calorias</p><div class="val" id="res-calorias">0.0 kcal</div></div>
-                <div class="summary-card"><p>Proteínas</p><div class="val" id="res-proteinas">0.0 g</div></div>
-                <div class="summary-card"><p>Carboidratos</p><div class="val" id="res-carboidratos">0.0 g</div></div>
-                <div class="summary-card"><p>Gorduras</p><div class="val" id="res-gorduras">0.0 g</div></div>
-                <div class="summary-card"><p>Fibras</p><div class="val" id="res-fibras">0.0 g</div></div>
-            </div>
-            <p class="info-disclaimer">Valores aproximados para fins educativos. O resultado não substitui orientação nutricional.</p>
-        </section>
-    </div>
-
-    <script>
-        // --- NAVEGAÇÃO DE ABAS ---
-        function switchTab(tabId) {
-            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            
-            document.getElementById(tabId).classList.add('active');
-            event.currentTarget.classList.add('active');
-        }
-
-        // --- ATIVIDADE 1: COFRE DIGITAL (Adaptação funcional simples para JS/Navegador) ---
-        // Nota: Para simular o comportamento de criptografia sem bibliotecas pesadas externas complexas, 
-        // usamos codificação Base64 acoplada com uma máscara XOR baseada no texto da senha.
-        function executarCriptografia(encriptar) {
-            const texto = document.getElementById('cofre-mensagem').value.trim();
-        }
+</body>
+</html>
