@@ -278,3 +278,303 @@
 
             <h3>Vantagens e Limitações</h3>
             <ul>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto: Tecnologia, Ética e Saúde</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --success: #16a34a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        header h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: var(--text-light);
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            background: var(--border);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text);
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .container {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: var(--text);
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1rem;
+            background: #fff;
+        }
+
+        input:focus, textarea:focus {
+            outline: 2px solid var(--primary);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        button.action-btn {
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+
+        button.action-btn:hover {
+            background: var(--primary-hover);
+        }
+
+        button.secondary-btn {
+            background: #64748b;
+        }
+        button.secondary-btn:hover {
+            background: #475569;
+        }
+
+        .result-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f1f5f9;
+            border-radius: 6px;
+            border-left: 4px solid var(--primary);
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .food-list {
+            margin-bottom: 15px;
+            max-height: 150px;
+            overflow-y: auto;
+            border: 1px solid var(--border);
+            padding: 10px;
+            border-radius: 6px;
+            background: #fafafa;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .summary-card {
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .summary-card .val {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .info-disclaimer {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>PROJETO INTEGRADOR</h1>
+        <p>Tecnologia, Ética e Saúde</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('cofre')">1 - Cofre Digital</button>
+        <button class="tab-btn" onclick="switchTab('prompt')">2 - Engenharia de Prompt</button>
+        <button class="tab-btn" onclick="switchTab('nutri')">3 - Calc. Nutricional</button>
+    </div>
+
+    <div class="container">
+        <!-- ATIVIDADE 1: COFRE DIGITAL -->
+        <section id="cofre" class="content-section active">
+            <h2>Cofre Digital (Criptografia)</h2>
+            <div class="form-group">
+                <label for="cofre-mensagem">Mensagem / Código Criptografado:</label>
+                <textarea id="cofre-mensagem" rows="4" placeholder="Digite o texto normal para criptografar OU cole o código para descriptografar..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="cofre-senha">Senha:</label>
+                <input type="password" id="cofre-senha" placeholder="Digite a chave secreta">
+            </div>
+            <div class="btn-group">
+                <button class="action-btn" onclick="executarCriptografia(true)">Criptografar</button>
+                <button class="action-btn secondary-btn" onclick="executarCriptografia(false)">Descriptografar</button>
+            </div>
+            <div id="cofre-resultado" class="result-box" style="display:none;"></div>
+        </section>
+
+        <!-- ATIVIDADE 2: ENGENHARIA DE PROMPT -->
+        <section id="prompt" class="content-section">
+            <h2>Engenharia de Prompt</h2>
+            <div class="form-group">
+                <label for="prompt-texto">Texto que deseja simplificar:</label>
+                <textarea id="prompt-texto" rows="4" placeholder="Cole o texto complexo aqui..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="prompt-tipo">Tipo de Prompt:</label>
+                <select id="prompt-tipo">
+                    <option value="simples">Prompt Simples</option>
+                    <option value="detalhado">Prompt Detalhado (Especialista em Acessibilidade)</option>
+                </select>
+            </div>
+            <div class="btn-group">
+                <button class="action-btn" onclick="gerarPrompt()">Gerar Prompt</button>
+            </div>
+            <div id="prompt-resultado" class="result-box" style="display:none;"></div>
+        </section>
+
+        <!-- ATIVIDADE 3: CALCULADORA NUTRICIONAL -->
+        <section id="nutri" class="content-section">
+            <h2>Calculadora Nutricional</h2>
+            <label>Alimentos Disponíveis:</label>
+            <div class="food-list" id="lista-alimentos-display"></div>
+            
+            <div class="form-group">
+                <label for="nutri-alimento">Selecionar Alimento:</label>
+                <select id="nutri-alimento"></select>
+            </div>
+            <div class="form-group">
+                <label for="nutri-qtd">Quantidade (em gramas):</label>
+                <input type="number" id="nutri-qtd" min="1" value="100">
+            </div>
+            <div class="btn-group">
+                <button class="action-btn" onclick="adicionarAlimento()">Adicionar Alimento</button>
+                <button class="action-btn secondary-btn" onclick="limparCalculadora()">Resetar</button>
+            </div>
+
+            <div class="summary-grid">
+                <div class="summary-card"><p>Calorias</p><div class="val" id="res-calorias">0.0 kcal</div></div>
+                <div class="summary-card"><p>Proteínas</p><div class="val" id="res-proteinas">0.0 g</div></div>
+                <div class="summary-card"><p>Carboidratos</p><div class="val" id="res-carboidratos">0.0 g</div></div>
+                <div class="summary-card"><p>Gorduras</p><div class="val" id="res-gorduras">0.0 g</div></div>
+                <div class="summary-card"><p>Fibras</p><div class="val" id="res-fibras">0.0 g</div></div>
+            </div>
+            <p class="info-disclaimer">Valores aproximados para fins educativos. O resultado não substitui orientação nutricional.</p>
+        </section>
+    </div>
+
+    <script>
+        // --- NAVEGAÇÃO DE ABAS ---
+        function switchTab(tabId) {
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // --- ATIVIDADE 1: COFRE DIGITAL (Adaptação funcional simples para JS/Navegador) ---
+        // Nota: Para simular o comportamento de criptografia sem bibliotecas pesadas externas complexas, 
+        // usamos codificação Base64 acoplada com uma máscara XOR baseada no texto da senha.
+        function executarCriptografia(encriptar) {
+            const texto = document.getElementById('cofre-mensagem').value.trim();
