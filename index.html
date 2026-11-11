@@ -3,68 +3,300 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Portal de Tecnologia</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Projeto Integrador: Tecnologia, Ética e Saúde</title>
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --success: #10b981;
+            --border: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: var(--bg-secondary);
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        header h1 {
+            font-size: 2rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        main {
+            flex: 1;
+            max-width: 1200px;
+            width: 100%;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h2 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+            color: var(--accent);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-main);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: var(--accent);
+        }
+
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        button:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .output-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: var(--bg-primary);
+            border: 1px dashed var(--border);
+            border-radius: 6px;
+            font-family: monospace;
+            word-break: break-all;
+            white-space: pre-wrap;
+            color: var(--success);
+            font-size: 0.9rem;
+            min-height: 50px;
+        }
+
+        .flex-btn-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        /* Estilos Calculadora */
+        .alimentos-lista {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            background: var(--bg-primary);
+            padding: 0.5rem;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        .resumo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .resumo-item {
+            background-color: var(--bg-primary);
+            padding: 0.75rem;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .resumo-item span {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .resumo-item strong {
+            font-size: 1.1rem;
+            color: var(--text-main);
+        }
+
+        .resumo-item.total {
+            grid-column: span 2;
+            border-color: var(--success);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            background-color: var(--bg-secondary);
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Cabeçalho / Menu -->
-    <header class="navbar">
-        <div class="logo">TechHub</div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#robotica">Robótica</a></li>
-                <li><a href="#fisica">Física & Tecnociência</a></li>
-                <li><a href="#programacao">Programação</a></li>
-            </ul>
-        </nav>
+    <header>
+        <h1>PROJETO INTEGRADOR</h1>
+        <p>Tecnologia, Ética e Saúde • Portfólio Interativo</p>
     </header>
 
-    <!-- Banner Principal -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Explorando o Futuro</h1>
-            <p>Um espaço minimalista dedicado à ciência, hardware e código.</p>
-        </div>
-    </section>
+    <main>
+        <!-- ATIVIDADE 1 - COFRE DIGITAL -->
+        <section class="card">
+            <h2>1. Cofre Digital (Criptografia)</h2>
+            <div class="form-group">
+                <label for="cofre-mensagem">Mensagem / Código Criptografado</label>
+                <textarea id="cofre-mensagem" rows="3" placeholder="Digite o texto para criptografar ou cole o código para descriptografar..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="cofre-senha">Senha</label>
+                <input type="password" id="cofre-senha" placeholder="Digite a chave secreta...">
+            </div>
+            <div class="flex-btn-group">
+                <button onclick="executarCriptografia()">Criptografar</button>
+                <button onclick="executarDescriptografia()" style="background-color: #475569;">Descriptografar</button>
+            </div>
+            <div class="output-box" id="cofre-output">O resultado aparecerá aqui...</div>
+        </section>
 
-    <!-- Áreas Principais -->
-    <main class="container">
-        <div class="grid-areas">
-            
-            <!-- Área 1: Robótica -->
-            <section id="robotica" class="card">
-                <div class="card-icon">🤖</div>
-                <h2>Robótica</h2>
-                <p>Espaço reservado para automação, circuitos, Arduino, ROS e inteligência mecânica.</p>
-                <button class="btn" onclick="explorar('Robótica')">Explorar</button>
-            </section>
+        <!-- ATIVIDADE 2 - ENGENHARIA DE PROMPT -->
+        <section class="card">
+            <h2>2. Engenharia de Prompt</h2>
+            <div class="form-group">
+                <label for="prompt-texto">Texto para simplificar</label>
+                <textarea id="prompt-texto" rows="3" placeholder="Insira o texto complexo aqui..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="prompt-tipo">Tipo de Instrução</label>
+                <select id="prompt-tipo">
+                    <option value="simples">Prompt Simples</option>
+                    <option value="detalhado">Prompt Detalhado (Acessibilidade)</option>
+                </select>
+            </div>
+            <button onclick="gerarPrompt()">Gerar Prompt para IA</button>
+            <div class="output-box" id="prompt-output" style="color: #3b82f6;">O prompt gerado aparecerá aqui...</div>
+        </section>
 
-            <!-- Área 2: Física Tecnociência -->
-            <section id="fisica" class="card">
-                <div class="card-icon">⚛️</div>
-                <h2>Física & Tecnociência</h2>
-                <p>Área destinada a estudos sobre física aplicada, mecânica quântica e inovações científicas.</p>
-                <button class="btn" onclick="explorar('Física e Tecnociência')">Explorar</button>
-            </section>
+        <!-- ATIVIDADE 3 - CALCULADORA NUTRICIONAL -->
+        <section class="card">
+            <h2>3. Calculadora Nutricional</h2>
+            <div class="alimentos-lista">
+                <strong>Alimentos base (por 100g):</strong> Arroz Cozido, Feijão Cozido, Frango Grelhado, Ovo Cozido, Banana, Aveia.
+            </div>
+            <div class="form-group">
+                <label for="nutri-alimento">Selecionar Alimento</label>
+                <select id="nutri-alimento">
+                    <option value="arroz cozido">Arroz Cozido</option>
+                    <option value="feijao cozido">Feijão Cozido</option>
+                    <option value="frango grelhado">Frango Grelhado</option>
+                    <option value="ovo cozido">Ovo Cozido</option>
+                    <option value="banana">Banana</option>
+                    <option value="aveia">Aveia</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="nutri-qtd">Quantidade (gramas)</label>
+                <input type="number" id="nutri-qtd" value="100" min="1">
+            </div>
+            <div class="flex-btn-group">
+                <button onclick="adicionarAlimento()">Adicionar</button>
+                <button onclick="limparCalculadora()" style="background-color: #ef4444;">Resetar</button>
+            </div>
 
-            <!-- Área 3: Programação -->
-            <section id="programacao" class="card">
-                <div class="card-icon">💻</div>
-                <h2>Programação</h2>
-                <p>Repositório de códigos, desenvolvimento web, algoritmos e engenharia de software.</p>
-                <button class="btn" onclick="explorar('Programação')">Explorar</button>
-            </section>
-
-        </div>
+            <div class="resumo-grid">
+                <div class="resumo-item total">
+                    <span>Calorias Totais</span>
+                    <strong id="total-calorias">0.0 kcal</strong>
+                </div>
+                <div class="resumo-item">
+                    <span>Proteínas</span>
+                    <strong id="total-proteinas">0.0g</strong>
+                </div>
+                <div class="resumo-item">
+                    <span>Carboidratos</span>
+                    <strong id="total-carboidratos">0.0g</strong>
+                </div>
+                <div class="resumo-item">
+                    <span>Gorduras</span>
+                    <strong id="total-gorduras">0.0g</strong>
+                </div>
+                <div class="resumo-item">
+                    <span>Fibras</span>
+                    <strong id="total-fibras">0.0g</strong>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Rodapé -->
     <footer>
-        <p>&copy; 2026 TechHub. Desenvolvido com 💜</p>
+        <p>Valores e operações simuladas para fins estritamente educativos.</p>
     </footer>
 
-    <script src="script.js"></script>
-</body>
-</html>
-
+    <script>
+        // ==========================================
+        // LÓGICA ATIVIDADE 1 - COFRE DIGITAL
+        // ==========================================
+        // Usando cifra simplificada XOR com Hash para rodar nativamente de forma síncrona no clique
+        function pseudoHashChave(senha) {
+        }
