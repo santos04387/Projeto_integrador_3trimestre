@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto Integrador - TechHub</title>
+    <title>Meu Portal de Tecnologia</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Cabeçalho -->
+    <!-- Cabeçalho / Menu -->
     <header class="navbar">
-        <div class="logo">TechHub 💜</div>
+        <div class="logo">TechHub</div>
         <nav>
             <ul class="nav-links">
-                <li><a href="#robotica">Cofre Digital</a></li>
-                <li><a href="#fisica">Engenharia de Prompt</a></li>
-                <li><a href="#programacao">Calculadora Nutricional</a></li>
+                <li><a href="#robotica">Robótica</a></li>
+                <li><a href="#fisica">Física & Tecnociência</a></li>
+                <li><a href="#programacao">Programação</a></li>
             </ul>
         </nav>
     </header>
@@ -23,75 +23,37 @@
     <!-- Banner Principal -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Projeto Integrador</h1>
-            <p>Tecnologia, Ética e Saúde aplicadas em uma interface moderna e funcional.</p>
+            <h1>Explorando o Futuro</h1>
+            <p>Um espaço minimalista dedicado à ciência, hardware e código.</p>
         </div>
     </section>
 
-    <!-- Conteúdo Principal -->
+    <!-- Áreas Principais -->
     <main class="container">
         <div class="grid-areas">
             
-            <!-- Área 1: Cofre Digital (Robótica/Segurança) -->
+            <!-- Área 1: Robótica -->
             <section id="robotica" class="card">
                 <div class="card-icon">🤖</div>
-                <h2>Cofre Digital</h2>
-                <p>Criptografe e descriptografe mensagens usando segurança baseada em chaves.</p>
-                
-                <div class="app-box">
-                    <input type="text" id="cofre-mensagem" placeholder="Digite a mensagem ou cole o código">
-                    <input type="password" id="cofre-senha" placeholder="Digite a senha secreta">
-                    <div class="btn-group">
-                        <button class="btn" onclick="executarCriptografar()">Criptografar</button>
-                        <button class="btn btn-secondary" onclick="executarDescriptografar()">Descriptografar</button>
-                    </div>
-                    <div id="cofre-resultado" class="resultado-box hidden"></div>
-                </div>
+                <h2>Robótica</h2>
+                <p>Espaço reservado para automação, circuitos, Arduino, ROS e inteligência mecânica.</p>
+                <button class="btn" onclick="explorar('Robótica')">Explorar</button>
             </section>
 
-            <!-- Área 2: Engenharia de Prompt (Tecnociência/IA) -->
+            <!-- Área 2: Física Tecnociência -->
             <section id="fisica" class="card">
                 <div class="card-icon">⚛️</div>
-                <h2>Engenharia de Prompt</h2>
-                <p>Converta textos complexos em instruções otimizadas para Inteligências Artificiais.</p>
-                
-                <div class="app-box">
-                    <textarea id="prompt-texto" placeholder="Digite o texto que deseja simplificar..."></textarea>
-                    <div class="btn-group">
-                        <button class="btn" onclick="gerarPrompt(1)">Prompt Simples</button>
-                        <button class="btn" onclick="gerarPrompt(2)">Prompt Detalhado</button>
-                    </div>
-                    <div id="prompt-resultado" class="resultado-box hidden"></div>
-                </div>
+                <h2>Física & Tecnociência</h2>
+                <p>Área destinada a estudos sobre física aplicada, mecânica quântica e inovações científicas.</p>
+                <button class="btn" onclick="explorar('Física e Tecnociência')">Explorar</button>
             </section>
 
-            <!-- Área 3: Calculadora Nutricional (Programação/Saúde) -->
+            <!-- Área 3: Programação -->
             <section id="programacao" class="card">
                 <div class="card-icon">💻</div>
-                <h2>Calculadora Nutricional</h2>
-                <p>Some macronutrientes e calorias de alimentos selecionados por peso.</p>
-                
-                <div class="app-box">
-                    <select id="nutri-alimento">
-                        <option value="arroz cozido">Arroz Cozido</option>
-                        <option value="feijao cozido">Feijão Cozido</option>
-                        <option value="frango grelhado">Frango Grelhado</option>
-                        <option value="ovo cozido">Ovo Cozido</option>
-                        <option value="banana">Banana</option>
-                        <option value="aveia">Aveia</option>
-                    </select>
-                    <input type="number" id="nutri-gramas" placeholder="Quantidade em gramas (g)" min="1">
-                    <button class="btn" onclick="adicionarAlimento()">Adicionar Alimento</button>
-                    
-                    <div id="nutri-resultado" class="resultado-box nutrition-grid">
-                        <div><strong>Calorias:</strong> <span id="n-cal">0.0</span> kcal</div>
-                        <div><strong>Proteínas:</strong> <span id="n-prot">0.0</span> g</div>
-                        <div><strong>Carboidratos:</strong> <span id="n-carb">0.0</span> g</div>
-                        <div><strong>Gorduras:</strong> <span id="n-gord">0.0</span> g</div>
-                        <div><strong>Fibras:</strong> <span id="n-fib">0.0</span> g</div>
-                    </div>
-                    <button class="btn btn-clear" onclick="limparNutri()">Limpar Tudo</button>
-                </div>
+                <h2>Programação</h2>
+                <p>Repositório de códigos, desenvolvimento web, algoritmos e engenharia de software.</p>
+                <button class="btn" onclick="explorar('Programação')">Explorar</button>
             </section>
 
         </div>
@@ -99,9 +61,10 @@
 
     <!-- Rodapé -->
     <footer>
-        <p>&copy; 2026 TechHub | Projeto Integrador desenvolvido com 💜</p>
+        <p>&copy; 2026 TechHub. Desenvolvido com 💜</p>
     </footer>
 
     <script src="script.js"></script>
 </body>
 </html>
+
