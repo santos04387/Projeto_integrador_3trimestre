@@ -1,228 +1,69 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-</div>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto: Tecnologia, Ética e Saúde</title>
-    <!-- Vinculação do CSS Externo -->
+    <title>Meu Portal de Tecnologia</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Biblioteca CryptoJS para Criptografia de alta segurança -->
-    <script src="https://cloudflare.com" defer></script>
-    <!-- Vinculação do JavaScript Externo -->
-    <script src="script.js" defer></script>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <h1>PROJETO: TECNOLOGIA, ÉTICA E SAÚDE</h1>
-        <p class="subtitle">Painel Integrador</p>
+    <!-- Cabeçalho / Menu -->
+    <header class="navbar">
+        <div class="logo">TechHub</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#robotica">Robótica</a></li>
+                <li><a href="#fisica">Física & Tecnociência</a></li>
+                <li><a href="#programacao">Programação</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <nav class="nav-tabs">
-        <button class="tab-btn active" data-tab="cofre">1 - Cofre Digital</button>
-        <button class="tab-btn" data-tab="prompt">2 - Engenharia de Prompt</button>
-        <button class="tab-btn" data-tab="nutri">3 - Calculadora Nutricional</button>
-    </nav>
-
-    <!-- ATIVIDADE 1 - COFRE DIGITAL -->
-    <section id="cofre" class="panel active">
-        <h2>🔒 Atividade 1 - Cofre Digital (Criptografia)</h2>
-        <div class="form-group">
-            <label for="cofre-modo">Ação:</label>
-            <select id="cofre-modo">
-                <option value="criptografar">Criptografar Mensagem</option>
-                <option value="descriptografar">Descriptografar Código</option>
-            </select>
-        </div>
-        
-        <div class="form-group" id="grupo-mensagem">
-            <label for="cofre-mensagem">Mensagem Original:</label>
-            <textarea id="cofre-mensagem" rows="3" placeholder="Digite sua mensagem secreta..."></textarea>
-        </div>
-
-        <div class="form-group" id="grupo-codigo" class="hidden">
-            <label for="cofre-codigo">Código Criptografado:</label>
-            <textarea id="cofre-codigo" rows="3" placeholder="Cole o código criptografado aqui..."></textarea>
-        </div>
-
-        <div class="form-group">
-            <label for="cofre-senha">Senha:</label>
-            <input type="password" id="cofre-senha" placeholder="Digite a chave secreta...">
-        </div>
-
-        <button class="action-btn" id="btn-cofre">Executar</button>
-
-        <div id="cofre-resultado" class="output-box hidden"></div>
-    </section>
-
-    <!-- ATIVIDADE 2 - ENGENHARIA DE PROMPT -->
-    <section id="prompt" class="panel">
-        <h2>🤖 Atividade 2 - Inteligência Artificial (Prompts)</h2>
-        <div class="form-group">
-            <label for="prompt-tipo">Tipo de Prompt:</label>
-            <select id="prompt-tipo">
-                <option value="1">Prompt Simples</option>
-                <option value="2">Prompt Detalhado (Acessibilidade)</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="prompt-texto">Texto que deseja simplificar:</label>
-            <textarea id="prompt-texto" rows="4" placeholder="Insira o texto complexo aqui..."></textarea>
-        </div>
-        <button class="action-btn" id="btn-prompt">Gerar Instrução</button>
-
-        <div id="prompt-resultado" class="output-box hidden"></div>
-        <p class="disclaimer">Este módulo prepara instruções estruturadas, mas não se conecta automaticamente a um modelo de IA.</p>
-    </section>
-
-    <!-- ATIVIDADE 3 - CALCULADORA NUTRICIONAL -->
-    <section id="nutri" class="panel">
-        <h2>🍎 Atividade 3 - Calculadora Nutricional</h2>
-        <div class="nutri-layout">
-            <div class="nutri-controls">
-                <div class="form-group">
-                    <label for="nutri-alimento">Escolha o Alimento:</label>
-                    <select id="nutri-alimento">
-                        <option value="arroz cozido">Arroz Cozido</option>
-                        <option value="feijao cozido">Feijão Cozido</option>
-                        <option value="frango grelhado">Frango Grelhado</option>
-                        <option value="ovo cozido">Ovo Cozido</option>
-                        <option value="banana">Banana</option>
-                        <option value="aveia">Aveia</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="nutri-qtd">Quantidade (gramas):</label>
-                    <input type="number" id="nutri-qtd" min="1" value="100">
-                </div>
-                <button class="action-btn" id="btn-adicionar-nutri">Adicionar ao Prato</button>
-                
-                <h3>Itens no Prato Atual:</h3>
-                <ul id="lista-refeicao" class="added-items"></ul>
-            </div>
-
-            <div class="nutri-results">
-                <h3>Resumo Nutricional Acumulado</h3>
-                <div id="nutri-totais" class="output-box layout-nutri-box">
-                    Calorias: 0.0 kcal<br>
-                    Proteínas: 0.0 g<br>
-                    Carboidratos: 0.0 g<br>
-                    Gorduras: 0.0 g<br>
-                    Fibras: 0.0 g
-                </div>
-                <button class="action-btn reset-btn" id="btn-reset-nutri">Resetar Calculadora</button>
-                <p class="disclaimer">Valores aproximados para fins educativos. O resultado não substitui orientação profissional.</p>
-            </div>
+    <!-- Banner Principal -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Explorando o Futuro</h1>
+            <p>Um espaço minimalista dedicado à ciência, hardware e código.</p>
         </div>
     </section>
-</div>
 
+    <!-- Áreas Principais -->
+    <main class="container">
+        <div class="grid-areas">
+            
+            <!-- Área 1: Robótica -->
+            <section id="robotica" class="card">
+                <div class="card-icon">🤖</div>
+                <h2>Robótica</h2>
+                <p>Espaço reservado para automação, circuitos, Arduino, ROS e inteligência mecânica.</p>
+                <button class="btn" onclick="explorar('Robótica')">Explorar</button>
+            </section>
+
+            <!-- Área 2: Física Tecnociência -->
+            <section id="fisica" class="card">
+                <div class="card-icon">⚛️</div>
+                <h2>Física & Tecnociência</h2>
+                <p>Área destinada a estudos sobre física aplicada, mecânica quântica e inovações científicas.</p>
+                <button class="btn" onclick="explorar('Física e Tecnociência')">Explorar</button>
+            </section>
+
+            <!-- Área 3: Programação -->
+            <section id="programacao" class="card">
+                <div class="card-icon">💻</div>
+                <h2>Programação</h2>
+                <p>Repositório de códigos, desenvolvimento web, algoritmos e engenharia de software.</p>
+                <button class="btn" onclick="explorar('Programação')">Explorar</button>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 TechHub. Desenvolvido com 💜</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
-<div class="projeto-container">
-    <header class="projeto-header">
-        <h1>Relatório Técnico e Avaliação do Projeto</h1>
-        <p class="projeto-sub">Análise de recursos de hardware, acessibilidade e documentação de desenvolvimento.</p>
-    </header>
-
-    <!-- 1. ABORDAGEM DOS RECURSOS E FUNCIONAMENTO TÉCNICO -->
-    <section class="projeto-section">
-        <h2>1. Recursos Tecnológicos e Funcionamento Técnico</h2>
-        
-        <div class="recurso-card">
-            <h3>🔹 Matriz de LEDs</h3>
-            <p><strong>Funcionamento:</strong> Uma matriz de LEDs organiza os diodos em linhas e colunas eletricamente conectadas. Em vez de controlar cada LED individualmente (o que exigiria muitos pinos do microcontrolador), utiliza-se uma técnica chamada <em>multiplexação</em>. Ao ativar uma linha específica e enviar energia para colunas específicas em uma velocidade extremamente rápida (invisível ao olho humano devido à persistência da visão), conseguimos desenhar letras, números e gráficos complexos na tela utilizando poucos pinos de controle.</p>
-        </div>
-
-        <div class="recurso-card">
-            <h3>🔹 Código Morse</h3>
-            <p><strong>Funcionamento:</strong> É um sistema de codificação de caracteres que traduz letras, números e sinais de pontuação em sequências de pulsos intermitentes. Esses pulsos são divididos em dois tipos de duração: pontos (sinais curtos) e traços (sinais longos, que equivalem a três vezes a duração de um ponto). Tecnicamente, em sistemas embarcados, o código é gerado controlando o tempo em nível alto (ligado) e nível baixo (desligado) de uma porta digital conectada a um buzzer (som) ou a um LED (luz).</p>
-        </div>
-
-        <div class="recurso-card">
-            <h3>🔹 Display (LCD / OLED)</h3>
-            <p><strong>Funcionamento:</strong> Os displays servem para exibir informações de forma alfanumérica ou gráfica. Um display LCD comum (como o 16x2), por exemplo, funciona controlando cristais líquidos através de campos elétricos que bloqueiam ou permitem a passagem da luz de fundo (backlight). Já os displays OLED iluminam cada pixel individualmente. Para poupar pinos do microcontrolador, esses módulos geralmente utilizam protocolos de comunicação como I2C ou SPI, permitindo enviar textos inteiros usando apenas dois ou três fios de dados.</p>
-        </div>
-    </section>
-
-    <!-- 2. COMPARAÇÃO E ANÁLISE -->
-    <section class="projeto-section">
-        <h2>2. Análise Comparativa das Tecnologias</h2>
-        <div class="tabela-responsiva">
-            <table class="projeto-table">
-                <thead>
-                    <tr>
-                        <th>Recurso</th>
-                        <th>Vantagens</th>
-                        <th>Limitações</th>
-                        <th>Possíveis Adaptações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Matriz de LEDs</strong></td>
-                        <td>Alta visibilidade e excelente para animações simples ou setas indicativas.</td>
-                        <td>Resolução baixa para textos longos e alto consumo se muitos LEDs ligarem juntos.</td>
-                        <td>Pode ser expandida em cascata para criar letreiros dinâmicos maiores.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Código Morse</strong></td>
-                        <td>Extremamente resiliente, funciona com hardware mínimo (apenas 1 pino de saída).</td>
-                        <td>Exige aprendizado prévio do usuário para decodificar a mensagem recebida.</td>
-                        <td>Pode ser traduzido em vibração por motores de feedback háptico.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Display</strong></td>
-                        <td>Exibe dados complexos, leituras de sensores e textos longos com clareza.</td>
-                        <td>Telas menores exigem proximidade visual e são sensíveis a impactos.</td>
-                        <td>Uso de interfaces de alto contraste ou retroiluminação ajustável para ambientes escuros.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <!-- 3. ACESSIBILIDADE E QUALIDADE DE VIDA -->
-    <section class="projeto-section">
-        <h2>3. Aplicações em Acessibilidade e Qualidade de Vida</h2>
-        <div class="recurso-card">
-            <p>A integração desses três componentes cria soluções poderosas para a inclusão social:</p>
-            <ul>
-                <li><strong>Sinalização Industrial e Urbana Adaptada:</strong> Matrizes de LED podem exibir setas direcionais e alertas visuais para pessoas com deficiência auditiva em ambientes barulhentos.</li>
-                <li><strong>Comunicação Assistiva Alternativa:</strong> O Código Morse permite que pessoas com severas limitações motoras (como portadores de esclerose lateral amiotrófica) se comuniquem piscando os olhos ou aplicando pequenas pressões em um sensor, enviando mensagens diretamente para um display.</li>
-                <li><strong>Autonomia Doméstica:</strong> Displays com letras ampliadas e alarmes sonoros em Morse ajudam idosos a monitorar se eletrodomésticos foram deixados ligados ou a identificar notificações de emergência pela casa.</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- 4. USO DA IA -->
-    <section class="projeto-section">
-        <h2>4. Registro e Avaliação Crítica do Uso da IA</h2>
-        <div class="recurso-card">
-            <p><strong>Registro de Uso:</strong> A Inteligência Artificial foi utilizada como ferramenta de suporte durante o desenvolvimento para a estruturação semântica do código, revisão das descrições físicas de multiplexação de hardware e formatação do design de interface.</p>
-            <p><strong>Análise Crítica:</strong> A IA se provou altamente eficiente na aceleração do design e na síntese de conceitos. No entanto, cabe destacar a necessidade de supervisão humana constante, uma vez que a IA tende a gerar soluções genéricas se não for alimentada com prompts contextualizados, exigindo refinamento manual para garantir a precisão técnica das ligações de hardware.</p>
-        </div>
-    </section>
-
-    <!-- 5. MELHORIAS E CONCLUSÃO -->
-    <section class="projeto-section">
-        <h2>5. Propostas de Melhoria e Conclusão</h2>
-        <div class="recurso-card">
-            <h3>🚀 Proposta de Melhoria</h3>
-            <p>Para iterações futuras do projeto, propõe-se a integração de um módulo de comunicação sem fio (como Bluetooth ou Wi-Fi) acoplado ao microcontrolador. Isso permitiria que as mensagens geradas via código Morse ou exibidas nos displays fossem espelhadas em tempo real em um aplicativo de smartphone, expandindo o alcance da acessibilidade para cuidadores e familiares a distância.</p>
-        </div>
-        <div class="recurso-card">
-            <h3>🎯 Conclusão (Resposta à Questão Motriz)</h3>
-            <p>A aplicação combinada de matrizes de LED, código Morse e displays prova que soluções de engenharia acessíveis e de baixo custo são viáveis para mitigar barreiras de comunicação. Ao traduzir sinais elétricos simples em estímulos visuais e sonoros inteligíveis, o projeto cumpre seu papel central de demonstrar como a tecnologia de automação e eletrônica pode — e deve — ser projetada para promover a dignidade, a autonomia e a melhoria direta da qualidade de vida de pessoas com vulnerabilidades ou deficiências.</p>
-        </div>
-    </section>
-
-    <!-- 6. FONTES E CRÉDITOS -->
-    <footer class="projeto-footer">
-        <p><strong>Fontes consultadas:</strong> Documentação oficial do Arduino, Manuais de displays I2C/OLED Adafruit, Diretrizes de Acessibilidade Web (WCAG) e Protocolos de Codificação Internacional de Sinais.</p>
-        <p class="creditos">© 2026 - Desenvolvido pelo Grupo de Engenharia e Tecnologia Assistiva.</p>
-    </footer>
-</div>
