@@ -1,6 +1,4 @@
 
-// MATRIZ DE LEDS
-
 const matriz = document.getElementById("matriz");
 
 const simbolos = {
@@ -14,7 +12,6 @@ const simbolos = {
         "01000010",
         "00111100"
     ],
-
     alerta: [
         "00011000",
         "00011000",
@@ -25,7 +22,6 @@ const simbolos = {
         "00011000",
         "00011000"
     ],
-
     ajuda: [
         "00011000",
         "00111100",
@@ -38,46 +34,35 @@ const simbolos = {
     ]
 };
 
-// Cria os 64 LEDs
-
+// Criar os 64 LEDs uma única vez
 for (let i = 0; i < 64; i++) {
     const led = document.createElement("div");
     led.classList.add("led");
     matriz.appendChild(led);
 }
 
-// Mostra os desenhos
-
+// Mostrar os símbolos
 function mostrarSimbolo(nome) {
     const desenho = simbolos[nome];
-    const leds = document.querySelectorAll(".led");
+    if (!desenho) return;
+
+    const leds = matriz.querySelectorAll(".led");
 
     leds.forEach((led, index) => {
         const linha = Math.floor(index / 8);
         const coluna = index % 8;
 
-        if (desenho[linha][coluna] === "1") {
-            led.classList.add("aceso");
-        } else {
-            led.classList.remove("aceso");
-        }
+        led.classList.toggle(
+            "aceso",
+            desenho[linha][coluna] === "1"
+        );
     });
 }
 
 // Símbolo inicial
-
 mostrarSimbolo("feliz");
 
-
-// CÓDIGO MORSE
-
-const sequenciaSOS = [
-    ".", ".", ".",
-    "-",
-    "-", "-",
-    ".", ".", "."
-];
-
+// Código Morse SOS
 let reproduzindo = false;
 
 async function reproduzirMorse() {
@@ -86,44 +71,47 @@ async function reproduzirMorse() {
     reproduzindo = true;
 
     const resultado = document.getElementById("morseResultado");
-    const leds = document.querySelectorAll(".led");
+    const leds = matriz.querySelectorAll(".led");
+
+    const sinais = [
+        ".", ".", ".", " ",
+        "-", "-", "-", " ",
+        ".", ".", "."
+    ];
 
     resultado.textContent = "Transmitindo SOS...";
 
-    for (let sinal of sequenciaSOS) {
+    for (const sinal of sinais) {
+        if (sinal === " ") {
+            await new Promise(resolve => setTimeout(resolve, 500));
+            continue;
+        }
+
         resultado.textContent =
-            sinal === "." ? "Sinal curto (ponto)" : "Sinal longo (traço)";
+            sinal === "." ? "Ponto: sinal curto" : "Traço: sinal longo";
 
         const duracao = sinal === "." ? 250 : 750;
 
-        // Simulação visual do sinal luminoso
         leds.forEach(led => led.classList.add("aceso"));
 
-        await new Promise(resolve =>
-            setTimeout(resolve, duracao)
-        );
+        await new Promise(resolve => setTimeout(resolve, duracao));
 
         leds.forEach(led => led.classList.remove("aceso"));
 
-        await new Promise(resolve =>
-            setTimeout(resolve, 300)
-        );
+        await new Promise(resolve => setTimeout(resolve, 250));
     }
 
     resultado.textContent = "SOS transmitido: ... --- ...";
 
     mostrarSimbolo("feliz");
-
     reproduzindo = false;
 }
 
-
-// DISPLAY LCD
-
+// Atualizar o display
 function atualizarDisplay() {
-    const mensagem = document.getElementById("mensagem").value;
+    const mensagem = document.getElementById("mensagem").value.trim();
 
-    if (mensagem.trim() === "") {
+    if (!mensagem) {
         alert("Digite uma mensagem primeiro!");
         return;
     }

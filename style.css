@@ -29,13 +29,8 @@ header {
     justify-content: space-between;
 }
 
-.navbar h2 {
-    color: white;
-}
-
-.navbar span {
-    color: #36d6bd;
-}
+.navbar h2 { color: white; }
+.navbar span { color: #36d6bd; }
 
 .menu {
     display: flex;
@@ -47,12 +42,9 @@ header {
     color: white;
     text-decoration: none;
     font-size: 14px;
-    transition: 0.3s;
 }
 
-.menu a:hover {
-    color: #36d6bd;
-}
+.menu a:hover { color: #36d6bd; }
 
 .hero {
     min-height: 480px;
@@ -65,16 +57,8 @@ header {
     background: linear-gradient(135deg, #101c35, #174d75, #087f83);
 }
 
-.hero-content {
-    max-width: 800px;
-}
-
-.tag {
-    color: #36d6bd;
-    font-weight: bold;
-    letter-spacing: 3px;
-    margin-bottom: 20px;
-}
+.hero-content { max-width: 800px; }
+.tag { color: #36d6bd; font-weight: bold; letter-spacing: 3px; margin-bottom: 20px; }
 
 .hero h1 {
     font-size: 46px;
@@ -82,10 +66,7 @@ header {
     margin-bottom: 20px;
 }
 
-.hero p {
-    font-size: 18px;
-    margin-bottom: 25px;
-}
+.hero p { font-size: 18px; margin-bottom: 25px; }
 
 .botao, button {
     display: inline-block;
@@ -111,20 +92,9 @@ header {
     padding: 75px 25px;
 }
 
-.secao h2 {
-    color: #087f83;
-    font-size: 30px;
-    margin-bottom: 25px;
-}
-
-.secao h3 {
-    color: #174d75;
-    margin: 20px 0 10px;
-}
-
-.secao p {
-    margin-bottom: 15px;
-}
+.secao h2 { color: #087f83; font-size: 30px; margin-bottom: 25px; }
+.secao h3 { color: #174d75; margin: 20px 0 10px; }
+.secao p { margin-bottom: 15px; }
 
 .fundo {
     max-width: none;
@@ -146,13 +116,9 @@ header {
     border-radius: 16px;
     color: white;
     text-align: center;
-    box-shadow: 0 8px 25px #101c3520;
 }
 
-.visual h3 {
-    color: #36d6bd;
-    margin-bottom: 20px;
-}
+.visual h3 { color: #36d6bd; }
 
 .destaque {
     background: white;
@@ -160,11 +126,6 @@ header {
     border-radius: 10px;
     padding: 22px;
     margin: 25px 0;
-    box-shadow: 0 5px 20px #0000000b;
-}
-
-.destaque h3 {
-    margin-top: 0;
 }
 
 .cards {
@@ -178,14 +139,9 @@ header {
     background: white;
     padding: 25px;
     border-radius: 12px;
-    box-shadow: 0 5px 20px #0000000b;
 }
 
-.card h3 {
-    margin-top: 0;
-}
-
-/* MATRIZ DE LEDS */
+.card h3 { margin-top: 0; }
 
 .led-matrix {
     display: grid;
@@ -220,12 +176,6 @@ header {
     margin-top: 20px;
 }
 
-/* CÓDIGO MORSE */
-
-.morse-box {
-    min-height: 270px;
-}
-
 .sos {
     font-size: 55px;
     color: #36d6bd;
@@ -246,8 +196,6 @@ header {
     font-weight: bold;
 }
 
-/* DISPLAY LCD */
-
 .lcd {
     background: #a8d6a2;
     color: #173c20;
@@ -259,9 +207,6 @@ header {
     border-radius: 7px;
     margin-bottom: 20px;
     min-height: 110px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 .visual input {
@@ -273,25 +218,16 @@ header {
     font-size: 16px;
 }
 
-/* TABELA */
-
-.tabela-container {
-    overflow-x: auto;
-}
+.tabela-container { overflow-x: auto; }
 
 table {
     width: 100%;
     border-collapse: collapse;
     background: white;
     min-width: 650px;
-    border-radius: 10px;
-    overflow: hidden;
 }
 
-th {
-    background: #101c35;
-    color: white;
-}
+th { background: #101c35; color: white; }
 
 td, th {
     padding: 16px;
@@ -299,9 +235,7 @@ td, th {
     border: 1px solid #e1e7ef;
 }
 
-tr:nth-child(even) {
-    background: #edf4fa;
-}
+tr:nth-child(even) { background: #edf4fa; }
 
 footer {
     background: #101c35;
@@ -310,62 +244,25 @@ footer {
     padding: 40px 20px;
 }
 
-footer h2 {
-    color: #36d6bd;
-    margin-bottom: 10px;
-}
-
-footer p {
-    font-size: 14px;
-    color: #cbd5e1;
-}
-
-/* RESPONSIVIDADE */
+footer h2 { color: #36d6bd; margin-bottom: 10px; }
+footer p { font-size: 14px; color: #cbd5e1; }
 
 @media (max-width: 850px) {
-    .navbar {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .menu {
-        justify-content: center;
-    }
-
-    .colunas {
-        grid-template-columns: 1fr;
-    }
+    .navbar { flex-direction: column; gap: 15px; }
+    .menu { justify-content: center; }
+    .colunas { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 600px) {
-    .hero h1 {
-        font-size: 32px;
-    }
-
-    .hero p {
-        font-size: 16px;
-    }
-
-    .secao h2 {
-        font-size: 25px;
-    }
-
-    .cards {
-        grid-template-columns: 1fr;
-    }
-
+    .hero h1 { font-size: 32px; }
+    .hero p { font-size: 16px; }
+    .secao h2 { font-size: 25px; }
+    .cards { grid-template-columns: 1fr; }
     .led-matrix {
         grid-template-columns: repeat(8, 17px);
         gap: 5px;
         padding: 12px;
     }
-
-    .led {
-        width: 17px;
-        height: 17px;
-    }
-
-    .menu {
-        gap: 12px;
-    }
+    .led { width: 17px; height: 17px; }
+    .menu { gap: 12px; }
 }
