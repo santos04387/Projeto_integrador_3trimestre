@@ -8,7 +8,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #f5f7fc;
+    background: #000b25;
     color: #202b3c;
     line-height: 1.7;
 }
@@ -29,8 +29,8 @@ header {
     justify-content: space-between;
 }
 
-.navbar h2 { color: white; }
-.navbar span { color: #36d6bd; }
+.navbar h2 { color: rgb(78, 0, 0); }
+.navbar span { color: #00ffd9; }
 
 .menu {
     display: flex;
@@ -39,7 +39,7 @@ header {
 }
 
 .menu a {
-    color: white;
+    color: rgba(145, 19, 138, 0.521);
     text-decoration: none;
     font-size: 14px;
 }
@@ -53,7 +53,7 @@ header {
     justify-content: center;
     text-align: center;
     padding: 50px 20px;
-    color: white;
+    color: rgba(8, 77, 2, 0.377);
     background: linear-gradient(135deg, #101c35, #174d75, #087f83);
 }
 
@@ -72,7 +72,7 @@ header {
     display: inline-block;
     border: none;
     background: #12a994;
-    color: white;
+    color: rgba(27, 0, 148, 0.575);
     padding: 12px 22px;
     border-radius: 8px;
     cursor: pointer;
@@ -98,7 +98,7 @@ header {
 
 .fundo {
     max-width: none;
-    background: #eaf0f8;
+    background: #ff93ed;
     padding-left: max(25px, calc((100% - 1100px) / 2));
     padding-right: max(25px, calc((100% - 1100px) / 2));
 }
@@ -114,14 +114,14 @@ header {
     background: #101c35;
     padding: 30px;
     border-radius: 16px;
-    color: white;
+    color: rgb(128, 67, 114);
     text-align: center;
 }
 
 .visual h3 { color: #36d6bd; }
 
 .destaque {
-    background: white;
+    background: rgb(48, 1, 53);
     border-left: 5px solid #12a994;
     border-radius: 10px;
     padding: 22px;
@@ -136,7 +136,7 @@ header {
 }
 
 .card {
-    background: white;
+    background: rgb(0, 0, 0);
     padding: 25px;
     border-radius: 12px;
 }
