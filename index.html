@@ -15,14 +15,12 @@
             --success: #10b981;
             --border: #334155;
         }
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
         body {
             background-color: var(--bg-primary);
             color: var(--text-main);
@@ -30,38 +28,32 @@
             display: flex;
             flex-direction: column;
         }
-
         header {
             background-color: var(--bg-secondary);
             padding: 3rem 1rem;
             text-align: center;
             border-bottom: 1px solid var(--border);
         }
-
         header h1 {
             font-size: 2.5rem;
             color: var(--text-main);
             margin-bottom: 0.5rem;
             letter-spacing: -0.05em;
         }
-
         header p {
             color: var(--text-muted);
             font-size: 1.1rem;
         }
-
-        /* CONFIGURAÇÃO PARA FICAR UM EMBAIXO DO OUTRO */
         main {
             flex: 1;
-            max-width: 750px; /* Largura ideal para blocos verticais empilhados */
+            max-width: 750px;
             width: 100%;
             margin: 2rem auto;
             padding: 0 1rem;
             display: flex;
-            flex-direction: column; /* Força os elementos a ficarem em formato de lista */
-            gap: 2.5rem; /* Espaço entre os blocos */
+            flex-direction: column;
+            gap: 2.5rem;
         }
-
         .card {
             background-color: var(--bg-secondary);
             border: 1px solid var(--border);
@@ -71,7 +63,6 @@
             flex-direction: column;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
         }
-
         .card h2 {
             font-size: 1.5rem;
             margin-bottom: 1.25rem;
@@ -79,18 +70,15 @@
             border-bottom: 2px solid var(--border);
             color: var(--accent);
         }
-
         .form-group {
             margin-bottom: 1.25rem;
         }
-
         label {
             display: block;
             font-size: 0.875rem;
             color: var(--text-muted);
             margin-bottom: 0.5rem;
         }
-
         input, textarea, select {
             width: 100%;
             padding: 0.75rem;
@@ -102,11 +90,9 @@
             outline: none;
             transition: border-color 0.2s;
         }
-
         input:focus, textarea:focus, select:focus {
             border-color: var(--accent);
         }
-
         button {
             width: 100%;
             padding: 0.85rem;
@@ -120,15 +106,12 @@
             transition: background-color 0.2s, transform 0.1s;
             margin-top: 0.5rem;
         }
-
         button:hover {
             background-color: var(--accent-hover);
         }
-
         button:active {
             transform: scale(0.98);
         }
-
         .output-box {
             margin-top: 1.25rem;
             padding: 1rem;
@@ -142,12 +125,10 @@
             font-size: 0.95rem;
             min-height: 50px;
         }
-
         .flex-btn-group {
             display: flex;
             gap: 0.75rem;
         }
-
         .alimentos-lista {
             font-size: 0.85rem;
             color: var(--text-muted);
@@ -158,14 +139,12 @@
             border: 1px solid var(--border);
             line-height: 1.4;
         }
-
         .resumo-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 0.75rem;
             margin-top: 1.25rem;
         }
-
         .resumo-item {
             background-color: var(--bg-primary);
             padding: 0.85rem;
@@ -173,25 +152,33 @@
             border: 1px solid var(--border);
             text-align: center;
         }
-
         .resumo-item span {
             display: block;
             font-size: 0.8rem;
             color: var(--text-muted);
             margin-bottom: 0.25rem;
         }
-
         .resumo-item strong {
             font-size: 1.2rem;
             color: var(--text-main);
         }
-
         .resumo-item.total {
             grid-column: span 2;
             border-color: var(--success);
             background-color: rgba(16, 185, 129, 0.05);
         }
-
+        #lista-prato {
+            margin-top: 1rem;
+            list-style: none;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        #lista-prato li {
+            padding: 0.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+        }
         footer {
             text-align: center;
             padding: 2rem;
@@ -204,7 +191,6 @@
     </style>
 </head>
 <body>
-
     <header>
         <h1>Explorando o Futuro</h1>
         <p>Um espaço minimalista dedicado à ciência, hardware e código.</p>
@@ -231,7 +217,7 @@
 
         <!-- SEÇÃO 2 - ENGENHARIA DE PROMPT -->
         <section class="card">
-            <h2>Física & Tecnoçiência (Engenharia de Prompt)</h2>
+            <h2>Inteligência Artificial (Engenharia de Prompt)</h2>
             <div class="form-group">
                 <label for="prompt-texto">Texto complexo para simplificação</label>
                 <textarea id="prompt-texto" rows="3" placeholder="Insira o artigo científico ou texto complexo aqui..."></textarea>
@@ -251,7 +237,7 @@
         <section class="card">
             <h2>Programação & Saúde (Calculadora Nutricional)</h2>
             <div class="alimentos-lista">
-                <strong>Ingredientes disponíveis (Base de Dados):</strong><br>
+                <strong>Ingredientes disponíveis (Base de Dados por 100g):</strong><br>
                 Arroz Cozido, Feijão Cozido, Frango Grelhado, Ovo Cozido, Banana e Aveia.
             </div>
             <div class="form-group">
@@ -273,7 +259,7 @@
                 <button onclick="adicionarAlimento()">Adicionar ao Prato</button>
                 <button onclick="limparCalculadora()" style="background-color: #ef4444;">Limpar Tudo</button>
             </div>
-
+            
             <div class="resumo-grid">
                 <div class="resumo-item total">
                     <span>Total de Energia Acumulada</span>
@@ -288,6 +274,3 @@
                     <strong id="total-carboidratos">0.0g</strong>
                 </div>
                 <div class="resumo-item">
-                    <span>Gorduras</span>
-                    <strong id="total-gorduras">0.0g</strong>
-                </div>
