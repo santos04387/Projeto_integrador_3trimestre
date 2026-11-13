@@ -489,3 +489,103 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Física & Tecnociência - Acústica na Escola</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Física & Tecnociência — Análise Acústica</h1>
+            <p>Estudo de ondas sonoras, intensidade (dB) e poluição sonora no ambiente escolar</p>
+        </header>
+
+        <!-- PAINEL SUPERIOR: SIMULADOR DE ONDA SONORA -->
+        <section class="top-grid">
+            <div class="glass-card">
+                <div class="control-group">
+                    <label>
+                        <span>Amplitude (Intensidade Sonora)</span>
+                        <span id="val-amp">65 dB</span>
+                    </label>
+                    <input type="range" id="slider-amp" min="20" max="120" value="65">
+                </div>
+
+                <div class="control-group">
+                    <label>
+                        <span>Frequência (Tom da Onda)</span>
+                        <span id="val-freq">440 Hz</span>
+                    </label>
+                    <input type="range" id="slider-freq" min="100" max="1000" value="440">
+                </div>
+
+                <div class="diagnostico-box">
+                    <p><strong>Diagnóstico:</strong> <span id="diag-titulo" class="status-text">Som Moderado</span></p>
+                    <p><strong>Impacto:</strong> <span id="diag-impacto" style="color: var(--text-muted);">Pode gerar leve fadiga após longos períodos.</span></p>
+                </div>
+            </div>
+
+            <div class="glass-card wave-panel">
+                <canvas id="waveCanvas" width="600" height="160"></canvas>
+                <div class="wave-labels">
+                    <span id="label-amp">Amplitude Moderada</span>
+                    <span id="label-freq">Média Frequência</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAINEL INFERIOR: TABELA DE MEDIÇÕES -->
+        <section class="glass-card">
+            <div class="table-header">
+                <div class="table-title">
+                    <h2>📊 Tabela de Medições na Escola</h2>
+                    <p>Registros coletados com aplicativo decibelímetro</p>
+                </div>
+                <button class="btn-add" onclick="toggleFormulario()">+ Adicionar Medição</button>
+            </div>
+
+            <!-- Formulário para adicionar nova linha -->
+            <div class="form-nova-medicao" id="form-medicao">
+                <input type="text" id="input-local" placeholder="Local (ex: biblioteca)">
+                <input type="number" id="input-db" placeholder="Nível (dB)" min="1" max="150">
+                <input type="text" id="input-contexto" placeholder="Contexto (ex: alunos estudando)">
+                <button class="btn-salvar" onclick="adicionarMedicao()">Salvar</button>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Local</th>
+                            <th>Data/Horário</th>
+                            <th>Nível (dB)</th>
+                            <th>Contexto</th>
+                            <th style="text-align: center;">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-corpo">
+                        <!-- Preenchido via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="stats-bar">
+                <div><strong>Média Geral:</strong> <span id="media-geral" class="valor-destaque">0.0 dB</span></div>
+                <div><strong>Local mais Ruidoso:</strong> <span id="local-ruidoso" class="valor-destaque">-</span></div>
+                <div><strong>Local mais Silencioso:</strong> <span id="local-silencioso" class="valor-destaque">-</span></div>
+            </div>
+        </section>
+
+        <footer>
+            Projeto Integrador: Inteligência Artificial e Tecnologias • Escola 2026
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

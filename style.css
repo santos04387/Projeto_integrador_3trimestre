@@ -266,3 +266,322 @@ footer p { font-size: 14px; color: #cbd5e1; }
     .led { width: 17px; height: 17px; }
     .menu { gap: 12px; }
 }
+:root {
+    --bg-gradient-top: #102a43;
+    --bg-gradient-bottom: #1e3a5f;
+    --card-bg: rgba(255, 255, 255, 0.06);
+    --card-border: rgba(255, 255, 255, 0.14);
+    --cyan: #22d3ee;
+    --cyan-hover: #06b6d4;
+    --text-main: #f8fafc;
+    --text-muted: #cbd5e1;
+    --danger: #f87171;
+    --warning: #fbbf24;
+    --success: #34d399;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, var(--bg-gradient-top), var(--bg-gradient-bottom));
+    color: var(--text-main);
+    min-height: 100vh;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1150px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    color: var(--cyan);
+    letter-spacing: -0.02em;
+}
+
+header p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* SEÇÃO SUPERIOR: SIMULADOR DE ONDAS */
+.top-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 850px) {
+    .top-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.glass-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.control-group {
+    margin-bottom: 1.25rem;
+}
+
+.control-group label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+}
+
+input[type="range"] {
+    width: 100%;
+    accent-color: var(--cyan);
+    cursor: pointer;
+}
+
+.diagnostico-box {
+    background: rgba(15, 23, 42, 0.45);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.diagnostico-box p {
+    font-size: 0.95rem;
+    margin-bottom: 0.35rem;
+}
+
+.diagnostico-box strong {
+    color: var(--text-main);
+}
+
+.status-text {
+    color: var(--cyan);
+    font-weight: 700;
+}
+
+.wave-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+canvas {
+    width: 100%;
+    height: 160px;
+    background: rgba(15, 23, 42, 0.35);
+    border-radius: 10px;
+    border: 1px solid var(--card-border);
+}
+
+.wave-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.6rem;
+}
+
+/* SEÇÃO INFERIOR: TABELA DE MEDIÇÕES */
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.table-title h2 {
+    font-size: 1.35rem;
+    color: var(--cyan);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.table-title p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+}
+
+.btn-add {
+    background-color: var(--cyan);
+    color: #0f172a;
+    border: none;
+    padding: 0.65rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.btn-add:hover {
+    background-color: var(--cyan-hover);
+}
+
+.btn-add:active {
+    transform: scale(0.97);
+}
+
+/* FORMULÁRIO OCULTO PARA NOVA MEDIÇÃO */
+.form-nova-medicao {
+    display: none;
+    grid-template-columns: 1.5fr 1fr 2fr auto;
+    gap: 0.75rem;
+    background: rgba(15, 23, 42, 0.5);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--card-border);
+    margin-bottom: 1.25rem;
+}
+
+@media (max-width: 750px) {
+    .form-nova-medicao {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-nova-medicao input {
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+    border: 1px solid var(--card-border);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-main);
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.form-nova-medicao input::placeholder {
+    color: #94a3b8;
+}
+
+.btn-salvar {
+    background: var(--success);
+    color: #0f172a;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* TABELA */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--card-border);
+}
+
+td {
+    padding: 0.95rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    font-size: 0.95rem;
+}
+
+tr:hover td {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.local-cell {
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.db-badge {
+    font-weight: 700;
+    color: var(--danger);
+}
+
+.db-badge.moderado {
+    color: var(--warning);
+}
+
+.db-badge.baixo {
+    color: var(--success);
+}
+
+.btn-delete {
+    background: transparent;
+    border: none;
+    color: var(--danger);
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.btn-delete:hover {
+    background: rgba(248, 113, 113, 0.15);
+}
+
+/* BARRA DE ESTATÍSTICAS INFERIOR */
+.stats-bar {
+    margin-top: 1.25rem;
+    background: rgba(15, 23, 42, 0.45);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.92rem;
+}
+
+.stats-bar strong {
+    color: var(--text-main);
+}
+
+.stats-bar span.valor-destaque {
+    color: var(--cyan);
+    font-weight: 700;
+}
+
+footer {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
