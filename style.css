@@ -585,3 +585,72 @@ footer {
     font-size: 0.85rem;
     color: var(--text-muted);
 }
+
+/* CONCLUSÃO DA PESQUISA */
+
+.conclusao-escolar {
+    margin-top: 30px;
+    padding: 28px;
+    background: linear-gradient(135deg, #172d63, #101b42);
+    border: 1px solid rgba(0, 225, 255, 0.4);
+    border-radius: 16px;
+    color: #ffffff;
+    box-shadow: 0 0 18px rgba(0, 200, 255, 0.12);
+    font-family: Arial, sans-serif;
+}
+
+.conclusao-escolar h2 {
+    color: #20e5ff;
+    font-size: 24px;
+    margin-bottom: 18px;
+}
+
+.conclusao-escolar p {
+    color: #e1eaff;
+    font-size: 15px;
+    line-height: 1.8;
+    text-align: justify;
+    margin-bottom: 14px;
+}
+
+.destaques-conclusao {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin: 22px 0;
+}
+
+.destaque-ruido {
+    background: rgba(20, 50, 110, 0.8);
+    border: 1px solid rgba(0, 225, 255, 0.35);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+}
+
+.destaque-ruido span {
+    display: block;
+    color: #aabbdc;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.destaque-ruido strong {
+    display: block;
+    color: #20e5ff;
+    font-size: 23px;
+    margin-bottom: 6px;
+}
+
+.conclusao-final {
+    margin-top: 20px;
+    padding: 16px;
+    border-left: 4px solid #20e5ff;
+    background: rgba(0, 225, 255, 0.08);
+    border-radius: 8px;
+}
+
+.conclusao-final strong {
+    color: #20e5ff;
+    font-size: 17px;
+}
