@@ -39,7 +39,7 @@ header {
 }
 
 .menu a {
-    color: rgb(255, 255, 255);
+    color: rgb(165, 89, 146);
     text-decoration: none;
     font-size: 14px;
 }
@@ -685,7 +685,7 @@ footer {
     padding: 10px 20px;
     color: #ffffff;
     background: rgba(0, 225, 255, 0.10);
-    border: 1px solid #20cfe8;
+    border: 1px solid #000000;
     border-radius: 25px;
     font-size: 14px;
     font-weight: bold;
@@ -790,7 +790,7 @@ body.tema-claro .conclusao-final {
 body.tema-claro .destaque-ruido strong,
 body.tema-claro .conclusao-escolar h2,
 body.tema-claro .criadores-projeto h3 {
-    color: #ffffff !important;
+    color: #ff4dd8 !important;
 }
 
 /* TEMA ESCURO */
@@ -807,14 +807,14 @@ body.tema-escuro p,
 body.tema-escuro span,
 body.tema-escuro label,
 body.tema-escuro strong {
-    color: #ffffff !important;
+    color: #000000 !important;
 }
 
 body.tema-escuro .conclusao-escolar,
 body.tema-escuro .criadores-projeto,
 body.tema-escuro .destaque-ruido {
     background: #292033 !important;
-    color: #ffffff !important;
+    color: #000000 !important;
     border-color: #e994b8;
 }
 
@@ -828,14 +828,14 @@ body.tema-escuro .conclusao-final {
 .acessibilidade,
 body.tema-escuro .acessibilidade {
     background: #f6c6d9 !important;
-    border-color: #ffffff;
+    border-color: #000000;
 }
 
 .acessibilidade button,
 body.tema-escuro .acessibilidade button {
     background: #e994b8 !important;
-    color: #ffffff !important;
-    border-color: #ffffff;
+    color: #000000 !important;
+    border-color: #000000;
 }
 
 /* CELULAR */
@@ -851,5 +851,56 @@ body.tema-escuro .acessibilidade button {
         min-width: 40px;
         height: 40px;
         padding: 6px;
+    }
+}
+
+/* Configuração para ocupar a tela inteira */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100vh;
+}
+
+body {
+    background-color: #f8dbea;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Área principal */
+.container {
+    width: 100%;
+    max-width: none;
+    min-height: 100vh;
+    padding: 20px 4%;
+    margin: 0 auto;
+}
+
+/* Cabeçalho */
+header {
+    width: 100%;
+    max-width: none;
+}
+
+/* Cartões das atividades */
+.card {
+    width: 100%;
+    max-width: none;
+    margin: 30px auto;
+}
+
+/* Ajuste para celulares */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .card {
+        width: 100%;
     }
 }
