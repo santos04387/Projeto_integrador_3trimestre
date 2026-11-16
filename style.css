@@ -637,7 +637,7 @@ footer {
 
 .destaque-ruido strong {
     display: block;
-    color: #20e5ff;
+    color: #ffbbfc;
     font-size: 23px;
     margin-bottom: 6px;
 }
@@ -645,8 +645,8 @@ footer {
 .conclusao-final {
     margin-top: 20px;
     padding: 16px;
-    border-left: 4px solid #20e5ff;
-    background: rgba(0, 225, 255, 0.08);
+    border-left: 4px solid #000000;
+    background: rgb(238, 155, 238);
     border-radius: 8px;
 }
 
