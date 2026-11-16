@@ -558,7 +558,7 @@ tr:hover td {
 /* BARRA DE ESTATÍSTICAS INFERIOR */
 .stats-bar {
     margin-top: 1.25rem;
-    background: rgba(15, 23, 42, 0.45);
+    background: rgb(255, 255, 255);
     border: 1px solid var(--card-border);
     border-radius: 10px;
     padding: 1rem 1.25rem;
@@ -591,16 +591,16 @@ footer {
 .conclusao-escolar {
     margin-top: 30px;
     padding: 28px;
-    background: linear-gradient(135deg, #172d63, #101b42);
-    border: 1px solid rgba(0, 225, 255, 0.4);
+    background: linear-gradient(135deg, #f8b6f8, #ffb3f9);
+    border: 1px solid rgb(255, 175, 248);
     border-radius: 16px;
     color: #ffffff;
-    box-shadow: 0 0 18px rgba(0, 200, 255, 0.12);
+    box-shadow: 0 0 18px rgb(255, 255, 255);
     font-family: Arial, sans-serif;
 }
 
 .conclusao-escolar h2 {
-    color: #20e5ff;
+    color: #f7a2eb;
     font-size: 24px;
     margin-bottom: 18px;
 }
@@ -621,8 +621,8 @@ footer {
 }
 
 .destaque-ruido {
-    background: rgba(20, 50, 110, 0.8);
-    border: 1px solid rgba(0, 225, 255, 0.35);
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(239, 181, 245);
     border-radius: 12px;
     padding: 16px;
     text-align: center;
@@ -651,7 +651,7 @@ footer {
 }
 
 .conclusao-final strong {
-    color: #20e5ff;
+    color: #fa98e5;
     font-size: 17px;
 }
 
@@ -661,14 +661,14 @@ footer {
     margin-top: 20px;
     padding: 25px;
     text-align: center;
-    background: linear-gradient(135deg, #172d63, #101b42);
-    border: 1px solid rgba(0, 225, 255, 0.4);
+    background: linear-gradient(135deg, #ffa6f8, #ffffff);
+    border: 1px solid rgb(255, 179, 249);
     border-radius: 16px;
     box-shadow: 0 0 18px rgba(0, 200, 255, 0.12);
 }
 
 .criadores-projeto h3 {
-    color: #20e5ff;
+    color: #f8a1e5;
     font-size: 20px;
     margin-bottom: 18px;
 }
