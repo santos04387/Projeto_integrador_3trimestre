@@ -654,3 +654,45 @@ footer {
     color: #20e5ff;
     font-size: 17px;
 }
+
+/* CRÉDITOS DOS CRIADORES */
+
+.criadores-projeto {
+    margin-top: 20px;
+    padding: 25px;
+    text-align: center;
+    background: linear-gradient(135deg, #172d63, #101b42);
+    border: 1px solid rgba(0, 225, 255, 0.4);
+    border-radius: 16px;
+    box-shadow: 0 0 18px rgba(0, 200, 255, 0.12);
+}
+
+.criadores-projeto h3 {
+    color: #20e5ff;
+    font-size: 20px;
+    margin-bottom: 18px;
+}
+
+.lista-criadores {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.lista-criadores span {
+    padding: 10px 20px;
+    color: #ffffff;
+    background: rgba(0, 225, 255, 0.10);
+    border: 1px solid #20cfe8;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.criadores-projeto p {
+    color: #aabbdc;
+    font-size: 12px;
+    margin-top: 15px;
+}
