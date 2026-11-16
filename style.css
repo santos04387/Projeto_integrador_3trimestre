@@ -8,13 +8,13 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #000b25;
-    color: #202b3c;
+    background: #fd84e3;
+    color: #fda4f1;
     line-height: 1.7;
 }
 
 header {
-    background: #101c35;
+    background: #f8a5f1;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -29,7 +29,7 @@ header {
     justify-content: space-between;
 }
 
-.navbar h2 { color: rgb(78, 0, 0); }
+.navbar h2 { color: rgb(255, 240, 240); }
 .navbar span { color: #00ffd9; }
 
 .menu {
@@ -39,7 +39,7 @@ header {
 }
 
 .menu a {
-    color: rgba(145, 19, 138, 0.521);
+    color: rgb(255, 255, 255);
     text-decoration: none;
     font-size: 14px;
 }
@@ -92,7 +92,7 @@ header {
     padding: 75px 25px;
 }
 
-.secao h2 { color: #087f83; font-size: 30px; margin-bottom: 25px; }
+.secao h2 { color: #ffffff; font-size: 30px; margin-bottom: 25px; }
 .secao h3 { color: #174d75; margin: 20px 0 10px; }
 .secao p { margin-bottom: 15px; }
 
