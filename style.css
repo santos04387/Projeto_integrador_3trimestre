@@ -53,7 +53,7 @@ header {
     justify-content: center;
     text-align: center;
     padding: 50px 20px;
-    color: rgba(8, 77, 2, 0.377);
+    color: rgb(255, 255, 255);
     background: linear-gradient(135deg, #101c35, #174d75, #087f83);
 }
 
@@ -71,7 +71,7 @@ header {
 .botao, button {
     display: inline-block;
     border: none;
-    background: #12a994;
+    background: #000000;
     color: rgba(27, 0, 148, 0.575);
     padding: 12px 22px;
     border-radius: 8px;
@@ -93,7 +93,7 @@ header {
 }
 
 .secao h2 { color:#ffffff; font-size: 30px; margin-bottom: 25px; }
-.secao h3 { color: #174d75; margin: 20px 0 10px; }
+.secao h3 { color: #fd98df; margin: 20px 0 10px; }
 .secao p { margin-bottom: 15px; }
 
 .fundo {
@@ -111,10 +111,10 @@ header {
 }
 
 .visual {
-    background: #101c35;
+    background: #db8fe6;
     padding: 30px;
     border-radius: 16px;
-    color: rgb(128, 67, 114);
+    color: rgb(255, 150, 250);
     text-align: center;
 }
 
