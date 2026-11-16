@@ -697,60 +697,66 @@ footer {
     margin-top: 15px;
 }
 
-/* BARRA DE ACESSIBILIDADE */
+/* ===== ACESSIBILIDADE ===== */
 
-.acessibilidade {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    z-index: 9999;
-
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-    padding: 12px;
-    background: #101b42;
-    border: 1px solid #20e5ff;
-    border-radius: 15px;
-
-    box-shadow: 0 0 15px rgba(0, 225, 255, 0.3);
+html {
+    font-size: calc(16px * var(--escala-texto, 1));
 }
 
-.acessibilidade button {
-    width: 45px;
-    height: 45px;
+/* BARRA NO TOPO */
 
-    border: 1px solid #20e5ff;
+.acessibilidade {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+
+    padding: 12px 20px;
+    margin-bottom: 20px;
+
+    background: #f6c6d9;
+    border-bottom: 2px solid #ffffff;
+    border-radius: 0 0 14px 14px;
+}
+
+/* BOTÕES */
+
+.acessibilidade button {
+    min-width: 43px;
+    height: 43px;
+    padding: 8px 12px;
+
+    background: #e994b8;
+    color: #ffffff;
+
+    border: 2px solid #ffffff;
     border-radius: 10px;
 
-    background: #172d63;
-    color: #20e5ff;
-
-    font-size: 18px;
+    font-size: 17px;
     font-weight: bold;
-
     cursor: pointer;
+
     transition: 0.3s;
 }
 
 .acessibilidade button:hover {
-    background: #20e5ff;
-    color: #101b42;
-    transform: scale(1.08);
+    background: #d96f9f;
+    transform: translateY(-2px);
 }
 
-/* AUMENTO E DIMINUIÇÃO DOS TEXTOS */
-
-html {
-    font-size: calc(100% * var(--escala-texto, 1));
-}
-
-/* TEMA CLARO */
+/* TEMA CLARO: ROSA E BRANCO */
 
 body.tema-claro {
-    background: #f2f5fc !important;
-    color: #17233f !important;
+    background: #f8dce8 !important;
+    color: #ffffff !important;
 }
 
 body.tema-claro h1,
@@ -758,63 +764,92 @@ body.tema-claro h2,
 body.tema-claro h3,
 body.tema-claro p,
 body.tema-claro span,
-body.tema-claro label {
-    color: #17233f;
+body.tema-claro label,
+body.tema-claro strong {
+    color: #ffffff !important;
 }
 
 body.tema-claro .conclusao-escolar,
 body.tema-claro .criadores-projeto {
-    background: #ffffff !important;
-    color: #17233f !important;
-    border: 1px solid #b7c9e8;
+    background: #f0b5ce !important;
+    color: #ffffff !important;
+    border: 1px solid #ffffff;
 }
 
 body.tema-claro .conclusao-escolar p,
 body.tema-claro .criadores-projeto p {
-    color: #263957 !important;
+    color: #ffffff !important;
 }
 
-body.tema-claro .destaque-ruido {
-    background: #e6efff !important;
-    border-color: #8ba9dc;
+body.tema-claro .destaque-ruido,
+body.tema-claro .conclusao-final {
+    background: #e99cbd !important;
+    border-color: #ffffff;
 }
 
 body.tema-claro .destaque-ruido strong,
 body.tema-claro .conclusao-escolar h2,
 body.tema-claro .criadores-projeto h3 {
-    color: #1265a5 !important;
+    color: #ffffff !important;
 }
 
-/* BOTÕES NO TEMA CLARO */
+/* TEMA ESCURO */
 
-body.tema-claro .acessibilidade {
-    background: #ffffff;
-    border-color: #1265a5;
+body.tema-escuro {
+    background: #171321 !important;
+    color: #ffffff !important;
 }
 
-body.tema-claro .acessibilidade button {
-    background: #e6efff;
-    color: #1265a5;
-    border-color: #1265a5;
+body.tema-escuro h1,
+body.tema-escuro h2,
+body.tema-escuro h3,
+body.tema-escuro p,
+body.tema-escuro span,
+body.tema-escuro label,
+body.tema-escuro strong {
+    color: #ffffff !important;
 }
 
-body.tema-claro .acessibilidade button:hover {
-    background: #1265a5;
-    color: #ffffff;
+body.tema-escuro .conclusao-escolar,
+body.tema-escuro .criadores-projeto,
+body.tema-escuro .destaque-ruido {
+    background: #292033 !important;
+    color: #ffffff !important;
+    border-color: #e994b8;
 }
 
-/* CELULARES */
+body.tema-escuro .conclusao-final {
+    background: #35243a !important;
+    border-color: #e994b8;
+}
+
+/* BARRA PERMANECE ROSA NOS DOIS TEMAS */
+
+.acessibilidade,
+body.tema-escuro .acessibilidade {
+    background: #f6c6d9 !important;
+    border-color: #ffffff;
+}
+
+.acessibilidade button,
+body.tema-escuro .acessibilidade button {
+    background: #e994b8 !important;
+    color: #ffffff !important;
+    border-color: #ffffff;
+}
+
+/* CELULAR */
 
 @media (max-width: 600px) {
     .acessibilidade {
-        right: 10px;
-        bottom: 10px;
-        padding: 8px;
+        justify-content: center;
         gap: 7px;
+        padding: 10px 5px;
     }
 
     .acessibilidade button {
-        width: 40px;
+        min-width: 40px;
         height: 40px;
+        padding: 6px;
     }
 }

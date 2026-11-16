@@ -308,64 +308,69 @@ function desenharOnda() {
 sliderAmp.addEventListener('input', atualizarDiagnostico);
 sliderFreq.addEventListener('input', atualizarDiagnostico);
 
-// Inicializa tudo
+// INICIALIZAÇÃO DO PROJETO
 renderizarTabela();
 atualizarDiagnostico();
 desenharOnda();
 
-// BARRA DE ACESSIBILIDADE
+// ===== ACESSIBILIDADE =====
 
 let escalaTexto = 1;
 
+const botaoAumentar = document.getElementById("aumentarFonte");
+const botaoDiminuir = document.getElementById("diminuirFonte");
+const botaoTema = document.getElementById("alternarTema");
+const botaoNormal = document.getElementById("normalizarSite");
+
+// Começa no tema rosa e branco
+document.body.classList.add("tema-claro");
+
+// Atualiza o tamanho dos textos
+function atualizarFonte() {
+    document.documentElement.style.setProperty(
+        "--escala-texto",
+        escalaTexto
+    );
+}
+
 // AUMENTAR TEXTO
-document.getElementById("aumentarFonte")
-    .addEventListener("click", function() {
-
-        escalaTexto = Math.min(escalaTexto + 0.1, 1.5);
-
-        document.documentElement.style.setProperty(
-            "--escala-texto",
-            escalaTexto
-        );
+botaoAumentar?.addEventListener("click", function() {
+    escalaTexto = Math.min(escalaTexto + 0.1, 1.5);
+    atualizarFonte();
 });
 
 // DIMINUIR TEXTO
-document.getElementById("diminuirFonte")
-    .addEventListener("click", function() {
-
-        escalaTexto = Math.max(escalaTexto - 0.1, 0.7);
-
-        document.documentElement.style.setProperty(
-            "--escala-texto",
-            escalaTexto
-        );
+botaoDiminuir?.addEventListener("click", function() {
+    escalaTexto = Math.max(escalaTexto - 0.1, 0.7);
+    atualizarFonte();
 });
 
-// ALTERNAR TEMA ESCURO E CLARO
-document.getElementById("alternarTema")
-    .addEventListener("click", function() {
+// ALTERNAR TEMA
+botaoTema?.addEventListener("click", function() {
 
-        document.body.classList.toggle("tema-claro");
+    const estaEscuro = document.body.classList.contains("tema-escuro");
 
-        if (document.body.classList.contains("tema-claro")) {
-            this.textContent = "🌙";
-        } else {
-            this.textContent = "☀️";
-        }
-});
-
-// VOLTAR AO NORMAL
-document.getElementById("normalizarSite")
-    .addEventListener("click", function() {
-
-        escalaTexto = 1;
-
-        document.documentElement.style.setProperty(
-            "--escala-texto",
-            1
-        );
-
+    if (estaEscuro) {
+        document.body.classList.remove("tema-escuro");
+        document.body.classList.add("tema-claro");
+        this.textContent = "🌙";
+    } else {
         document.body.classList.remove("tema-claro");
+        document.body.classList.add("tema-escuro");
+        this.textContent = "☀️";
+    }
+});
 
-        document.getElementById("alternarTema").textContent = "☀️";
+// RESTAURAR PADRÃO
+botaoNormal?.addEventListener("click", function() {
+
+    escalaTexto = 1;
+    atualizarFonte();
+
+    document.body.classList.remove("tema-escuro");
+    document.body.classList.add("tema-claro");
+
+    if (botaoTema) {
+        botaoTema.textContent = "🌙";
+    }
 });
