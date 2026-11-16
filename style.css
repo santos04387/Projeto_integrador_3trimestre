@@ -223,7 +223,7 @@ header {
 table {
     width: 100%;
     border-collapse: collapse;
-    background: rgb(212, 10, 10);
+    background: rgb(255, 255, 255);
     min-width: 650px;
 }
 
@@ -235,7 +235,7 @@ td, th {
     border: 1px solid #831c97;
 }
 
-tr:nth-child(even) { background: #a86a0c; }
+tr:nth-child(even) { background: #ffffff; }
 
 footer {
     background: #101c35;
