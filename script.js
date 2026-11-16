@@ -312,3 +312,60 @@ sliderFreq.addEventListener('input', atualizarDiagnostico);
 renderizarTabela();
 atualizarDiagnostico();
 desenharOnda();
+
+// BARRA DE ACESSIBILIDADE
+
+let escalaTexto = 1;
+
+// AUMENTAR TEXTO
+document.getElementById("aumentarFonte")
+    .addEventListener("click", function() {
+
+        escalaTexto = Math.min(escalaTexto + 0.1, 1.5);
+
+        document.documentElement.style.setProperty(
+            "--escala-texto",
+            escalaTexto
+        );
+});
+
+// DIMINUIR TEXTO
+document.getElementById("diminuirFonte")
+    .addEventListener("click", function() {
+
+        escalaTexto = Math.max(escalaTexto - 0.1, 0.7);
+
+        document.documentElement.style.setProperty(
+            "--escala-texto",
+            escalaTexto
+        );
+});
+
+// ALTERNAR TEMA ESCURO E CLARO
+document.getElementById("alternarTema")
+    .addEventListener("click", function() {
+
+        document.body.classList.toggle("tema-claro");
+
+        if (document.body.classList.contains("tema-claro")) {
+            this.textContent = "🌙";
+        } else {
+            this.textContent = "☀️";
+        }
+});
+
+// VOLTAR AO NORMAL
+document.getElementById("normalizarSite")
+    .addEventListener("click", function() {
+
+        escalaTexto = 1;
+
+        document.documentElement.style.setProperty(
+            "--escala-texto",
+            1
+        );
+
+        document.body.classList.remove("tema-claro");
+
+        document.getElementById("alternarTema").textContent = "☀️";
+});
