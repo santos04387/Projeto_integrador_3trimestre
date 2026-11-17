@@ -1,7 +1,7 @@
 /* ===== PALETA ROSA E PRETO ===== */
 :root {
-    --bg-gradient-top: #fce4ec;
-    --bg-gradient-bottom: #f8bbd0;
+    --bg-gradient-top: #000000;
+    --bg-gradient-bottom: #ff34dd;
     --card-bg: #e994b8;
     --card-border: #d96f9f;
     --cyan: #d96f9f;
@@ -14,7 +14,7 @@
 }
 /* Fundo geral */
 html, body {
-    background: #fce4ec !important;
+    background: #000000 !important;
     color: #000000 !important;
 }
 
@@ -26,7 +26,7 @@ header {
 
 /* Seções */
 .secao {
-    background: #fce4ec;
+    background: #ff34dd;
     color: #000000;
 }
 
@@ -38,9 +38,9 @@ header {
 .card,
 .glass-card,
 .visual {
-    background: #e994b8 !important;
+    background: #ff34dd !important;
     color: #000000 !important;
-    border-color: #d96f9f;
+    border-color: #ff34dd;
 }
 
 /* Títulos e textos */
@@ -68,7 +68,7 @@ button:hover,
 
 /* Tabelas */
 table {
-    background: #f8bbd0 !important;
+    background: #ff34dd !important;
     color: #000000 !important;
 }
 
@@ -82,13 +82,13 @@ td {
 }
 
 tr:nth-child(even) {
-    background: #fce4ec !important;
+    background: #ff34dd !important;
 }
 
 /* Conclusão e créditos */
 .conclusao-escolar,
 .criadores-projeto {
-    background: #e994b8 !important;
+    background: #ff34dd !important;
     color: #000000 !important;
 }
 
@@ -101,7 +101,7 @@ tr:nth-child(even) {
 
 /* Barra de acessibilidade */
 .acessibilidade {
-    background: #e994b8 !important;
+    background: #ff34dd !important;
 }
 
 .acessibilidade button {
@@ -111,7 +111,7 @@ tr:nth-child(even) {
 
 /* Rodapé */
 footer {
-    background: #e994b8 !important;
+    background: #ff34dd !important;
     color: #000000 !important;
 }
 
@@ -122,19 +122,19 @@ footer p {
 
 /* Visor e simulador */
 .lcd {
-    background: #fce4ec !important;
+    background: #000000 !important;
     color: #000000 !important;
 }
 
 .diagnostico-box,
 .stats-bar {
-    background: #e994b8 !important;
+    background: #ff34dd !important;
     color: #000000 !important;
 }
 
 /* Campos de texto */
 input, textarea, select {
-    background: #ffffff !important;
+    background: #000000 !important;
     color: #000000 !important;
     border: 1px solid #d96f9f !important;
 }
@@ -142,8 +142,8 @@ input, textarea, select {
 /* Tema claro e escuro mantêm a paleta rosa */
 body.tema-claro,
 body.tema-escuro {
-    background: #fce4ec !important;
-    color: #000000 !important;
+    background: #000000 !important;
+    color: #ff34dd !important;
 }
 
 body.tema-claro *,
