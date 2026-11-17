@@ -1,33 +1,17 @@
-Vou manter todo o seu layout e as funcionalidades, mas padronizar as cores para uma identidade rosa:
-
-- Fundo principal: rosa-claro ("#fce4ec).
-- Fundos de seções e cartões: rosa-escuro ("#e994b8).
-- Letras: preto (`#000000`).
-- Botões: rosa-escuro com letras pretas.
-- Tabelas: tons de rosa com texto preto.
-
-Adicione este CSS no final do seu arquivo, para sobrescrever as cores anteriores:
-
-css
-
-```css
-
 /* ===== PALETA ROSA E PRETO ===== */
-
 :root {
     --bg-gradient-top: #fce4ec;
-    --bg-gradient-bottom #f8bbd0
-    --card-bg #e994b8
-    --card-border #d96f9f
-    --cyan #d96f9f
-    --cyan-hover #c75b8b
-    --text-main:  #000000;
+    --bg-gradient-bottom: #f8bbd0;
+    --card-bg: #e994b8;
+    --card-border: #d96f9f;
+    --cyan: #d96f9f;
+    --cyan-hover: #c75b8b;
+    --text-main: #000000;
     --text-muted: #000000;
     --danger: #000000;
     --warning: #000000;
     --success: #000000;
 }
-
 /* Fundo geral */
 html, body {
     background: #fce4ec !important;
