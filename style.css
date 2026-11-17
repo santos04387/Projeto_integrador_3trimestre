@@ -1,7 +1,7 @@
 Vou manter todo o seu layout e as funcionalidades, mas padronizar as cores para uma identidade rosa:
 
-- Fundo principal: rosa-claro (`#fce4ec`).
-- Fundos de seções e cartões: rosa-escuro (`#e994b8`).
+- Fundo principal: rosa-claro ("#fce4ec).
+- Fundos de seções e cartões: rosa-escuro ("#e994b8).
 - Letras: preto (`#000000`).
 - Botões: rosa-escuro com letras pretas.
 - Tabelas: tons de rosa com texto preto.
@@ -21,10 +21,10 @@ css
     --card-border #d96f9f
     --cyan #d96f9f
     --cyan-hover #c75b8b
-    --text-main #000000;
-    --text-muted #000000;
-    --danger:#000000;
-    --warning:#000000;
+    --text-main:  #000000;
+    --text-muted: #000000;
+    --danger: #000000;
+    --warning: #000000;
     --success: #000000;
 }
 
