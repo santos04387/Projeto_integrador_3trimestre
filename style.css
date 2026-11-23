@@ -1075,3 +1075,50 @@ button, .botao {
 .conclusao-escolar, .criadores-projeto {
     color: #ffffff !important;
 }
+
+/* SITE EM TELA CHEIA */
+html, body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+header,
+main,
+footer,
+.hero,
+.secao,
+.fundo {
+    width: 100%;
+    max-width: none;
+}
+
+main {
+    margin: 0;
+}
+
+.secao {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.hero {
+    min-height: 100vh;
+}
+
+/* Ajuste para celular */
+@media (max-width: 600px) {
+    .secao {
+        padding: 45px 18px;
+    }
+
+    .hero {
+        min-height: 80vh;
+    }
+}
