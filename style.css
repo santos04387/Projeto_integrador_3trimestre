@@ -1047,5 +1047,31 @@ header {
        width: 100%;
    }
 }
+/* DEIXAR TODAS AS LETRAS BRANCAS */
 
+* {
+    color: #ffffff !important;
+}
 
+/* Garantir letras brancas nos títulos e textos */
+h1, h2, h3, h4, h5, h6,
+p, span, label, a, strong,
+td, th, li, footer {
+    color: #ffffff !important;
+}
+
+/* Campos de texto */
+input, textarea, select {
+    color: #ffffff !important;
+}
+
+/* Texto dos botões */
+button, .botao {
+    color: #ffffff !important;
+}
+
+/* Texto dos cartões e tabelas */
+.card, .glass-card, .visual,
+.conclusao-escolar, .criadores-projeto {
+    color: #ffffff !important;
+}
