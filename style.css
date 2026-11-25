@@ -914,35 +914,38 @@ footer p {
         transition-duration: .01ms !important;
     }
 }
-/* Deixa o site ocupar a tela inteira */
+/* FORÇAR VISUALIZAÇÃO DESKTOP EM TODAS AS TELAS */
+
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
 html, body {
+    margin: 0;
+    padding: 0;
     width: 100%;
     min-height: 100%;
-    overflow-x: hidden;
 }
 
 body {
-    min-height: 100vh;
+    min-width: 1024px;
     width: 100%;
+    overflow-x: auto;
 }
 
-/* Conteúdo ocupa toda a largura */
-.container {
+/* Container em tela cheia */
+.container,
+main,
+#app,
+#root {
     width: 100%;
     max-width: none;
     margin: 0;
 }
 
-/* Evita layout apertado de celular */
-@media (min-width: 768px) {
-    .container {
-        width: 100%;
-        max-width: none;
+/* Desativar estilos responsivos */
+@media screen and (max-width: 768px) {
+    body {
+        min-width: 1024px;
     }
 }
