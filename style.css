@@ -1034,19 +1034,6 @@ header {
    max-width: none;
    margin: 30px auto;
 }
-
-
-/* Ajuste para celulares */
-@media (max-width: 768px) {
-   .container {
-       padding: 15px;
-   }
-
-
-   .card {
-       width: 100%;
-   }
-}
 /* DEIXAR TODAS AS LETRAS BRANCAS */
 
 * {
