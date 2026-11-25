@@ -914,3 +914,35 @@ footer p {
         transition-duration: .01ms !important;
     }
 }
+/* Deixa o site ocupar a tela inteira */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Conteúdo ocupa toda a largura */
+.container {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+}
+
+/* Evita layout apertado de celular */
+@media (min-width: 768px) {
+    .container {
+        width: 100%;
+        max-width: none;
+    }
+}
