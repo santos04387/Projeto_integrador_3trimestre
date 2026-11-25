@@ -1,662 +1,625 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta name="viewport" content="width=1024">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programaçãow - Projeto Integrador</title>
+    <meta name="viewport" content="width=1024">
+    <title>Meu Site</title>
+
     <style>
-        :root {
-            --bg-primary: #000000;
-            --bg-secondary: #ff34dd;
-            --accent: hsl(308, 41%, 66%);
-            --accent-hover: #c76dc2;
-            --text-main: #ff34dd;
-            --text-muted: #ff74f8;
-            --success: #000000;
-            --border: #ff34dd;
-        }
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-sizing: border-box;
         }
+
         body {
-            background-color: var(--bg-primary);
-            color: var(--text-main);
-            min-height: 100vh;
+            min-width: 1024px;
+            width: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        /* TELA DE ENTRADA */
+        #tela-entrada {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100vh;
+            background: #111;
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            color: white;
         }
-        header {
-            background-color: var(--bg-secondary);
-            padding: 3rem 1rem;
-            text-align: center;
-            border-bottom: 1px solid var(--border);
+
+        #tela-entrada h1 {
+            font-size: 65px;
+            margin-bottom: 30px;
+            letter-spacing: 8px;
         }
-        header h1 {
-            font-size: 2.5rem;
-            color: var(--text-main);
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.05em;
-        }
-        header p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-        }
-        main {
-            flex: 1;
-            max-width: 750px;
-            width: 100%;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            display: flex;
-            flex-direction: column;
-            gap: 2.5rem;
-        }
-        .card {
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-        }
-        .card h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1.25rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--border);
-            color: var(--accent);
-        }
-        .form-group {
-            margin-bottom: 1.25rem;
-        }
-        label {
-            display: block;
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            margin-bottom: 0.5rem;
-        }
-        input, textarea, select {
-            width: 100%;
-            padding: 0.75rem;
-            background-color: var(--bg-primary);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            color: var(--text-main);
-            font-size: 1rem;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-        input:focus, textarea:focus, select:focus {
-            border-color: var(--accent);
-        }
-        button {
-            width: 100%;
-            padding: 0.85rem;
-            background-color: var(--accent);
-            color: rgb(0, 0, 0);
+
+        #tela-entrada button {
+            padding: 18px 65px;
+            font-size: 22px;
+            background: white;
+            color: black;
             border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-weight: 600;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.2s, transform 0.1s;
-            margin-top: 0.5rem;
+            transition: 0.3s;
         }
-        button:hover {
-            background-color: var(--accent-hover);
+
+        #tela-entrada button:hover {
+            background: #888;
+            color: white;
+            transform: scale(1.08);
         }
-        button:active {
-            transform: scale(0.98);
-        }
-        .output-box {
-            margin-top: 1.25rem;
-            padding: 1rem;
-            background-color: var(--bg-primary);
-            border: 1px dashed var(--border);
-            border-radius: 6px;
-            font-family: monospace;
-            word-break: break-all;
-            white-space: pre-wrap;
-            color: var(--success);
-            font-size: 0.95rem;
-            min-height: 50px;
-        }
-        .flex-btn-group {
-            display: flex;
-            gap: 0.75rem;
-        }
-        .alimentos-lista {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 1.25rem;
-            background: var(--bg-primary);
-            padding: 0.75rem;
-            border-radius: 6px;
-            border: 1px solid var(--border);
-            line-height: 1.4;
-        }
-        .resumo-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.75rem;
-            margin-top: 1.25rem;
-        }
-        .resumo-item {
-            background-color: var(--bg-primary);
-            padding: 0.85rem;
-            border-radius: 6px;
-            border: 1px solid var(--border);
-            text-align: center;
-        }
-        .resumo-item span {
-            display: block;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 0.25rem;
-        }
-        .resumo-item strong {
-            font-size: 1.2rem;
-            color: var(--text-main);
-        }
-        .resumo-item.total {
-            grid-column: span 2;
-            border-color: var(--success);
-            background-color: rgba(16, 185, 129, 0.05);
-        }
-        #lista-prato {
-            margin-top: 1rem;
-            list-style: none;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-        #lista-prato li {
-            padding: 0.5rem;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-        }
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            border-top: 1px solid var(--border);
-            background-color: var(--bg-secondary);
-            margin-top: 4rem;
+
+        /* SITE */
+        #site {
+            display: none;
+            width: 100%;
+            min-height: 100vh;
+            background: #f1f1f1;
+            color: black;
+            padding: 40px;
         }
     </style>
 </head>
+
 <body>
-    <header>
-        <h1>Explorando o Futuro</h1>
-        <p>Um espaço minimalista dedicado à ciência, hardware e código.</p>
-    </header>
 
-    <main>
-        <!-- SEÇÃO 1 - COFRE DIGITAL -->
-        <section class="card">
-            <h2>Robótica & Criptografia (Cofre Digital)</h2>
-            <div class="form-group">
-                <label for="cofre-mensagem">Mensagem para Criptografar / Código para Descriptografar</label>
-                <textarea id="cofre-mensagem" rows="3" placeholder="Digite o texto normal ou insira o código criptografado aqui..."></textarea>
-            </div>
-            <div class="form-group">
-                <label for="cofre-senha">Senha do Cofre</label>
-                <input type="password" id="cofre-senha" placeholder="Insira a senha secreta...">
-            </div>
-            <div class="flex-btn-group">
-                <button onclick="executarCriptografia()">Criptografar</button>
-                <button onclick="executarDescriptografia()" style="background-color: #475569;">Descriptografar</button>
-            </div>
-            <div class="output-box" id="cofre-output">O resultado da criptografia aparecerá aqui...</div>
-        </section>
+    <!-- TELA INICIAL -->
+    <div id="tela-entrada">
+        <h1>ENTRAR</h1>
+        <button onclick="entrar()">COMEÇAR</button>
+    </div>
 
-        <!-- SEÇÃO 2 - ENGENHARIA DE PROMPT -->
-        <section class="card">
-            <h2>Inteligência Artificial (Engenharia de Prompt)</h2>
-            <div class="form-group">
-                <label for="prompt-texto">Texto complexo para simplificação</label>
-                <textarea id="prompt-texto" rows="3" placeholder="Insira o artigo científico ou texto complexo aqui..."></textarea>
-            </div>
-            <div class="form-group">
-                <label for="prompt-tipo">Tipo de Instrução</label>
-                <select id="prompt-tipo">
-                    <option value="simples">Prompt Direto / Simples</option>
-                    <option value="detalhado">Prompt Avançado (Foco em Acessibilidade)</option>
-                </select>
-            </div>
-            <button onclick="gerarPrompt()">Gerar Prompt para IA</button>
-            <div class="output-box" id="prompt-output" style="color: #6366f1;">O prompt gerado aparecerá aqui...</div>
-        </section>
+    <!-- CONTEÚDO DO SITE --> Projeto Integrador
+    <div id="site">
+        <h1>Bem-vindo ao meu site!</h1>
+        <p>Seu conteúdo aparece aqui.</p>
 
-        <!-- SEÇÃO 3 - CALCULADORA NUTRICIONAL -->
-        <section class="card">
-            <h2>Programação & Saúde (Calculadora Nutricional)</h2>
-            <div class="alimentos-lista">
-                <strong>Ingredientes disponíveis (Base de Dados por 100g):</strong><br>
-                Arroz Cozido, Feijão Cozido, Frango Grelhado, Ovo Cozido, Banana e Aveia.
-            </div>
-            <div class="form-group">
-                <label for="nutri-alimento">Escolha o Alimento</label>
-                <select id="nutri-alimento">
-                    <option value="arroz cozido">Arroz Cozido</option>
-                    <option value="feijao cozido">Feijão Cozido</option>
-                    <option value="frango grelhado">Frango Grelhado</option>
-                    <option value="ovo cozido">Ovo Cozido</option>
-                    <option value="banana">Banana</option>
-                    <option value="aveia">Aveia</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="nutri-qtd">Quantidade Consumida (em gramas)</label>
-                <input type="number" id="nutri-qtd" value="100" min="1">
-            </div>
-            <div class="flex-btn-group">
-                <button onclick="adicionarAlimento()">Adicionar ao Prato</button>
-                <button onclick="limparCalculadora()" style="background-color: #ef4444;">Limpar Tudo</button>
-            </div>
-            
-            <div class="resumo-grid">
-                <div class="resumo-item total">
-                    <span>Total de Energia Acumulada</span>
-                    <strong id="total-calorias">0.0 kcal</strong>
-                </div>
-                <div class="resumo-item">
-                    <span>Proteínas</span>
-                    <strong id="total-proteinas">0.0g</strong>
-                </div>
-                <div class="resumo-item">
-                    <span>Carboidratos</span>
-                    <strong id="total-carboidratos">0.0g</strong>
-                </div>
-                <div class="resumo-item">
+        <!-- COLOQUE O RESTO DO SEU SITE AQUI -->  <h1>Explorando o Futuro</h1>
+       <p>Um espaço minimalista dedicado à ciência, hardware e código.</p>
+   </header>
+
+
+   <main>
+       <!-- SEÇÃO 1 - COFRE DIGITAL -->
+       <section class="card">
+           <h2>Robótica & Criptografia (Cofre Digital)</h2>
+           <div class="form-group">
+               <label for="cofre-mensagem">Mensagem para Criptografar / Código para Descriptografar</label>
+               <textarea id="cofre-mensagem" rows="3" placeholder="Digite o texto normal ou insira o código criptografado aqui..."></textarea>
+           </div>
+           <div class="form-group">
+               <label for="cofre-senha">Senha do Cofre</label>
+               <input type="password" id="cofre-senha" placeholder="Insira a senha secreta...">
+           </div>
+           <div class="flex-btn-group">
+               <button onclick="executarCriptografia()">Criptografar</button>
+               <button onclick="executarDescriptografia()" style="background-color: #475569;">Descriptografar</button>
+           </div>
+           <div class="output-box" id="cofre-output">O resultado da criptografia aparecerá aqui...</div>
+       </section>
+
+
+       <!-- SEÇÃO 2 - ENGENHARIA DE PROMPT -->
+       <section class="card">
+           <h2>Inteligência Artificial (Engenharia de Prompt)</h2>
+           <div class="form-group">
+               <label for="prompt-texto">Texto complexo para simplificação</label>
+               <textarea id="prompt-texto" rows="3" placeholder="Insira o artigo científico ou texto complexo aqui..."></textarea>
+           </div>
+           <div class="form-group">
+               <label for="prompt-tipo">Tipo de Instrução</label>
+               <select id="prompt-tipo">
+                   <option value="simples">Prompt Direto / Simples</option>
+                   <option value="detalhado">Prompt Avançado (Foco em Acessibilidade)</option>
+               </select>
+           </div>
+           <button onclick="gerarPrompt()">Gerar Prompt para IA</button>
+           <div class="output-box" id="prompt-output" style="color: #6366f1;">O prompt gerado aparecerá aqui...</div>
+       </section>
+
+
+       <!-- SEÇÃO 3 - CALCULADORA NUTRICIONAL -->
+       <section class="card">
+           <h2>Programação & Saúde (Calculadora Nutricional)</h2>
+           <div class="alimentos-lista">
+               <strong>Ingredientes disponíveis (Base de Dados por 100g):</strong><br>
+               Arroz Cozido, Feijão Cozido, Frango Grelhado, Ovo Cozido, Banana e Aveia.
+           </div>
+           <div class="form-group">
+               <label for="nutri-alimento">Escolha o Alimento</label>
+               <select id="nutri-alimento">
+                   <option value="arroz cozido">Arroz Cozido</option>
+                   <option value="feijao cozido">Feijão Cozido</option>
+                   <option value="frango grelhado">Frango Grelhado</option>
+                   <option value="ovo cozido">Ovo Cozido</option>
+                   <option value="banana">Banana</option>
+                   <option value="aveia">Aveia</option>
+               </select>
+           </div>
+           <div class="form-group">
+               <label for="nutri-qtd">Quantidade Consumida (em gramas)</label>
+               <input type="number" id="nutri-qtd" value="100" min="1">
+           </div>
+           <div class="flex-btn-group">
+               <button onclick="adicionarAlimento()">Adicionar ao Prato</button>
+               <button onclick="limparCalculadora()" style="background-color: #ef4444;">Limpar Tudo</button>
+           </div>
+          
+           <div class="resumo-grid">
+               <div class="resumo-item total">
+                   <span>Total de Energia Acumulada</span>
+                   <strong id="total-calorias">0.0 kcal</strong>
+               </div>
+               <div class="resumo-item">
+                   <span>Proteínas</span>
+                   <strong id="total-proteinas">0.0g</strong>
+               </div>
+               <div class="resumo-item">
+                   <span>Carboidratos</span>
+                   <strong id="total-carboidratos">0.0g</strong>
+               </div>
+               <div class="resumo-item">
+
+
+
 
 
 
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechAcessível | Projeto Integrador</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>TechAcessível | Projeto Integrador</title>
+   <link rel="stylesheet" href="style.css">
+   <script src="script.js" defer></script>
 </head>
 <body>
 
+
 <header>
-    <nav class="navbar">
-        <h2>Tech<span>Acessível</span></h2>
-        <div class="menu">
-            <a href="#inicio">Início</a>
-            <a href="#acessibilidade">Acessibilidade</a>
-            <a href="#led">Matriz LED</a>
-            <a href="#morse">Morse</a>
-            <a href="#display">Display</a>
-            <a href="#comparacao">Comparação</a>
-        </div>
-    </nav>
+   <nav class="navbar">
+       <h2>Tech<span>Acessível</span></h2>
+       <div class="menu">
+           <a href="#inicio">Início</a>
+           <a href="#acessibilidade">Acessibilidade</a>
+           <a href="#led">Matriz LED</a>
+           <a href="#morse">Morse</a>
+           <a href="#display">Display</a>
+           <a href="#comparacao">Comparação</a>
+       </div>
+   </nav>
 </header>
 
+
 <section class="hero" id="inicio">
-    <div class="hero-content">
-        <p class="tag">PROJETO INTEGRADOR • ROBÓTICA</p>
-        <h1>Tecnologia que aproxima: Robótica e Inclusão</h1>
-        <p>Como a ciência, a tecnologia e a Inteligência Artificial podem melhorar a qualidade de vida?</p>
-        <a href="#acessibilidade" class="botao">Conheça o projeto</a>
-    </div>
+   <div class="hero-content">
+       <p class="tag">PROJETO INTEGRADOR • ROBÓTICA</p>
+       <h1>Tecnologia que aproxima: Robótica e Inclusão</h1>
+       <p>Como a ciência, a tecnologia e a Inteligência Artificial podem melhorar a qualidade de vida?</p>
+       <a href="#acessibilidade" class="botao">Conheça o projeto</a>
+   </div>
 </section>
+
 
 <main>
 
+
 <section id="acessibilidade" class="secao">
-    <h2>01. Acessibilidade e qualidade de vida</h2>
-    <p>A acessibilidade significa garantir que todas as pessoas possam utilizar espaços, serviços e tecnologias com autonomia e segurança.</p>
-    <p>A comunicação permite transmitir informações, sentimentos e necessidades por meio da fala, escrita, imagens, sons e sinais.</p>
-    <p>A qualidade de vida está relacionada ao bem-estar, à saúde, à segurança e à independência.</p>
+   <h2>01. Acessibilidade e qualidade de vida</h2>
+   <p>A acessibilidade significa garantir que todas as pessoas possam utilizar espaços, serviços e tecnologias com autonomia e segurança.</p>
+   <p>A comunicação permite transmitir informações, sentimentos e necessidades por meio da fala, escrita, imagens, sons e sinais.</p>
+   <p>A qualidade de vida está relacionada ao bem-estar, à saúde, à segurança e à independência.</p>
 
-    <div class="destaque">
-        <h3>Uma situação do cotidiano</h3>
-        <p>Uma pessoa com deficiência auditiva pode não perceber um aviso de emergência transmitido apenas por alto-falantes. Painéis luminosos e displays podem ajudar a transmitir essa informação.</p>
-    </div>
 
-    <h3>O que pretendemos investigar?</h3>
-    <p>Investigar como a matriz de LEDs, o código Morse e os displays podem facilitar a comunicação, aumentar a segurança e promover a inclusão.</p>
+   <div class="destaque">
+       <h3>Uma situação do cotidiano</h3>
+       <p>Uma pessoa com deficiência auditiva pode não perceber um aviso de emergência transmitido apenas por alto-falantes. Painéis luminosos e displays podem ajudar a transmitir essa informação.</p>
+   </div>
+
+
+   <h3>O que pretendemos investigar?</h3>
+   <p>Investigar como a matriz de LEDs, o código Morse e os displays podem facilitar a comunicação, aumentar a segurança e promover a inclusão.</p>
 </section>
+
 
 <section id="led" class="secao fundo">
-    <h2>02. Matriz de LEDs</h2>
+   <h2>02. Matriz de LEDs</h2>
 
-    <div class="colunas">
-        <div>
-            <h3>O que é?</h3>
-            <p>É um componente eletrônico formado por pequenos LEDs organizados em linhas e colunas. Uma matriz 8x8 possui 64 LEDs.</p>
 
-            <h3>Como funciona?</h3>
-            <p>A programação determina quais LEDs devem acender ou permanecer apagados, formando desenhos, letras e símbolos.</p>
-        </div>
+   <div class="colunas">
+       <div>
+           <h3>O que é?</h3>
+           <p>É um componente eletrônico formado por pequenos LEDs organizados em linhas e colunas. Uma matriz 8x8 possui 64 LEDs.</p>
 
-        <div class="visual">
-            <div class="led-matrix" id="matriz"></div>
-            <div class="controles">
-                <button onclick="mostrarSimbolo('feliz')">Alegria</button>
-                <button onclick="mostrarSimbolo('alerta')">Alerta</button>
-                <button onclick="mostrarSimbolo('ajuda')">Ajuda</button>
-            </div>
-        </div>
-    </div>
 
-    <h3>Aplicação na acessibilidade</h3>
-    <p>Uma matriz pode apresentar alertas, setas e símbolos em escolas, hospitais e espaços públicos, ajudando pessoas a compreender informações importantes.</p>
+           <h3>Como funciona?</h3>
+           <p>A programação determina quais LEDs devem acender ou permanecer apagados, formando desenhos, letras e símbolos.</p>
+       </div>
 
-    <div class="cards">
-        <div class="card">
-            <h3>Vantagens</h3>
-            <p>Transmite informações visualmente e permite criar símbolos e animações.</p>
-        </div>
-        <div class="card">
-            <h3>Limitações</h3>
-            <p>Pode ser difícil de enxergar à distância e possui espaço limitado para detalhes.</p>
-        </div>
-    </div>
+
+       <div class="visual">
+           <div class="led-matrix" id="matriz"></div>
+           <div class="controles">
+               <button onclick="mostrarSimbolo('feliz')">Alegria</button>
+               <button onclick="mostrarSimbolo('alerta')">Alerta</button>
+               <button onclick="mostrarSimbolo('ajuda')">Ajuda</button>
+           </div>
+       </div>
+   </div>
+
+
+   <h3>Aplicação na acessibilidade</h3>
+   <p>Uma matriz pode apresentar alertas, setas e símbolos em escolas, hospitais e espaços públicos, ajudando pessoas a compreender informações importantes.</p>
+
+
+   <div class="cards">
+       <div class="card">
+           <h3>Vantagens</h3>
+           <p>Transmite informações visualmente e permite criar símbolos e animações.</p>
+       </div>
+       <div class="card">
+           <h3>Limitações</h3>
+           <p>Pode ser difícil de enxergar à distância e possui espaço limitado para detalhes.</p>
+       </div>
+   </div>
 </section>
+
 
 <section id="morse" class="secao">
-    <h2>03. Código Morse</h2>
-    <h3>O que é?</h3>
-    <p>É um sistema de comunicação que utiliza combinações de sinais curtos e longos para representar letras e números.</p>
+   <h2>03. Código Morse</h2>
+   <h3>O que é?</h3>
+   <p>É um sistema de comunicação que utiliza combinações de sinais curtos e longos para representar letras e números.</p>
 
-    <div class="colunas">
-        <div>
-            <h3>Como funciona na Robótica?</h3>
-            <p>Um LED pode emitir sinais luminosos e um buzzer pode emitir sinais sonoros. O ponto representa um sinal curto e o traço representa um sinal longo.</p>
-            <p>Um botão pode iniciar a transmissão ou permitir o envio manual dos sinais.</p>
-        </div>
 
-        <div class="visual morse-box">
-            <h3>Mensagem de emergência</h3>
-            <div class="sos">SOS</div>
-            <p class="codigo">... --- ...</p>
-            <button onclick="reproduzirMorse()">Demonstrar Morse</button>
-            <div id="morseResultado">Clique para visualizar os sinais.</div>
-        </div>
-    </div>
+   <div class="colunas">
+       <div>
+           <h3>Como funciona na Robótica?</h3>
+           <p>Um LED pode emitir sinais luminosos e um buzzer pode emitir sinais sonoros. O ponto representa um sinal curto e o traço representa um sinal longo.</p>
+           <p>Um botão pode iniciar a transmissão ou permitir o envio manual dos sinais.</p>
+       </div>
 
-    <h3>Aplicação na vida real</h3>
-    <p>Uma pessoa em uma emergência poderia utilizar uma lanterna para transmitir sinais luminosos pedindo ajuda.</p>
 
-    <div class="cards">
-        <div class="card">
-            <h3>Vantagens</h3>
-            <p>Pode transmitir mensagens por luz ou som e ser utilizado em emergências.</p>
-        </div>
-        <div class="card">
-            <h3>Limitações</h3>
-            <p>É necessário conhecer o código. Nem todas as pessoas conseguem perceber sinais luminosos ou sonoros.</p>
-        </div>
-    </div>
+       <div class="visual morse-box">
+           <h3>Mensagem de emergência</h3>
+           <div class="sos">SOS</div>
+           <p class="codigo">... --- ...</p>
+           <button onclick="reproduzirMorse()">Demonstrar Morse</button>
+           <div id="morseResultado">Clique para visualizar os sinais.</div>
+       </div>
+   </div>
+
+
+   <h3>Aplicação na vida real</h3>
+   <p>Uma pessoa em uma emergência poderia utilizar uma lanterna para transmitir sinais luminosos pedindo ajuda.</p>
+
+
+   <div class="cards">
+       <div class="card">
+           <h3>Vantagens</h3>
+           <p>Pode transmitir mensagens por luz ou som e ser utilizado em emergências.</p>
+       </div>
+       <div class="card">
+           <h3>Limitações</h3>
+           <p>É necessário conhecer o código. Nem todas as pessoas conseguem perceber sinais luminosos ou sonoros.</p>
+       </div>
+   </div>
 </section>
+
 
 <section id="display" class="secao fundo">
-    <h2>04. Display</h2>
+   <h2>04. Display</h2>
 
-    <div class="colunas">
-        <div>
-            <h3>O que é?</h3>
-            <p>É um componente eletrônico utilizado para apresentar letras, números, mensagens e avisos.</p>
 
-            <h3>Como funciona?</h3>
-            <p>A programação envia informações ao display, que apresenta os caracteres na tela. O LCD 16x2 possui duas linhas de até 16 caracteres cada.</p>
-        </div>
+   <div class="colunas">
+       <div>
+           <h3>O que é?</h3>
+           <p>É um componente eletrônico utilizado para apresentar letras, números, mensagens e avisos.</p>
 
-        <div class="visual">
-            <div class="lcd">
-                <div id="linha1">BEM-VINDO!</div>
-                <div id="linha2">SAIDA A DIREITA</div>
-            </div>
 
-            <input type="text" id="mensagem" maxlength="16" placeholder="Digite uma mensagem">
-            <button onclick="atualizarDisplay()">Atualizar display</button>
-        </div>
-    </div>
+           <h3>Como funciona?</h3>
+           <p>A programação envia informações ao display, que apresenta os caracteres na tela. O LCD 16x2 possui duas linhas de até 16 caracteres cada.</p>
+       </div>
 
-    <h3>Aplicação na acessibilidade</h3>
-    <p>Displays podem ser utilizados em hospitais, escolas e transportes públicos para apresentar senhas, orientações e avisos de segurança.</p>
 
-    <div class="cards">
-        <div class="card">
-            <h3>Vantagens</h3>
-            <p>Apresenta informações escritas de maneira organizada e permite atualizar mensagens.</p>
-        </div>
-        <div class="card">
-            <h3>Limitações</h3>
-            <p>Letras pequenas e baixo contraste podem dificultar a leitura. Pessoas com deficiência visual podem precisar de áudio ou braille.</p>
-        </div>
-    </div>
+       <div class="visual">
+           <div class="lcd">
+               <div id="linha1">BEM-VINDO!</div>
+               <div id="linha2">SAIDA A DIREITA</div>
+           </div>
+
+
+           <input type="text" id="mensagem" maxlength="16" placeholder="Digite uma mensagem">
+           <button onclick="atualizarDisplay()">Atualizar display</button>
+       </div>
+   </div>
+
+
+   <h3>Aplicação na acessibilidade</h3>
+   <p>Displays podem ser utilizados em hospitais, escolas e transportes públicos para apresentar senhas, orientações e avisos de segurança.</p>
+
+
+   <div class="cards">
+       <div class="card">
+           <h3>Vantagens</h3>
+           <p>Apresenta informações escritas de maneira organizada e permite atualizar mensagens.</p>
+       </div>
+       <div class="card">
+           <h3>Limitações</h3>
+           <p>Letras pequenas e baixo contraste podem dificultar a leitura. Pessoas com deficiência visual podem precisar de áudio ou braille.</p>
+       </div>
+   </div>
 </section>
+
 
 <section id="comparacao" class="secao">
-    <h2>05. Comparação dos três recursos</h2>
+   <h2>05. Comparação dos três recursos</h2>
 
-    <div class="tabela-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>Característica</th>
-                    <th>Matriz LED</th>
-                    <th>Código Morse</th>
-                    <th>Display</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>Informação</td><td>Símbolos e desenhos</td><td>Letras codificadas</td><td>Textos e números</td></tr>
-                <tr><td>Comunicação</td><td>Visual</td><td>Visual ou sonora</td><td>Visual</td></tr>
-                <tr><td>Utilização</td><td>Alertas e direções</td><td>Emergências</td><td>Orientações</td></tr>
-                <tr><td>Vantagem</td><td>Símbolos rápidos</td><td>Luz ou som</td><td>Mensagens escritas</td></tr>
-                <tr><td>Limitação</td><td>Poucos detalhes</td><td>Exige conhecimento</td><td>Depende da leitura</td></tr>
-                <tr><td>Adaptações</td><td>Contraste e símbolos maiores</td><td>Combinar luz e som</td><td>Áudio, braille e letras maiores</td></tr>
-            </tbody>
-        </table>
-    </div>
+
+   <div class="tabela-container">
+       <table>
+           <thead>
+               <tr>
+                   <th>Característica</th>
+                   <th>Matriz LED</th>
+                   <th>Código Morse</th>
+                   <th>Display</th>
+               </tr>
+           </thead>
+           <tbody>
+               <tr><td>Informação</td><td>Símbolos e desenhos</td><td>Letras codificadas</td><td>Textos e números</td></tr>
+               <tr><td>Comunicação</td><td>Visual</td><td>Visual ou sonora</td><td>Visual</td></tr>
+               <tr><td>Utilização</td><td>Alertas e direções</td><td>Emergências</td><td>Orientações</td></tr>
+               <tr><td>Vantagem</td><td>Símbolos rápidos</td><td>Luz ou som</td><td>Mensagens escritas</td></tr>
+               <tr><td>Limitação</td><td>Poucos detalhes</td><td>Exige conhecimento</td><td>Depende da leitura</td></tr>
+               <tr><td>Adaptações</td><td>Contraste e símbolos maiores</td><td>Combinar luz e som</td><td>Áudio, braille e letras maiores</td></tr>
+           </tbody>
+       </table>
+   </div>
 </section>
+
 
 <section class="secao fundo">
-    <h2>06. Conclusão</h2>
-    <p>A Robótica pode ajudar a resolver problemas reais da sociedade. A matriz de LEDs, o código Morse e os displays permitem transmitir informações de diferentes maneiras.</p>
-    <p>A Inteligência Artificial também pode contribuir com a tradução de mensagens, o reconhecimento de necessidades e a adaptação de informações.</p>
-    <p>A verdadeira inovação acontece quando todos podem participar, comunicar-se e ter mais autonomia.</p>
+   <h2>06. Conclusão</h2>
+   <p>A Robótica pode ajudar a resolver problemas reais da sociedade. A matriz de LEDs, o código Morse e os displays permitem transmitir informações de diferentes maneiras.</p>
+   <p>A Inteligência Artificial também pode contribuir com a tradução de mensagens, o reconhecimento de necessidades e a adaptação de informações.</p>
+   <p>A verdadeira inovação acontece quando todos podem participar, comunicar-se e ter mais autonomia.</p>
 </section>
 
+
 <section class="secao">
-    <h2>07. Uso da Inteligência Artificial</h2>
-    <div class="destaque">
-        <p><strong>Ferramenta utilizada:</strong> ChatGPT.</p>
-        <p>A ferramenta foi utilizada como apoio à pesquisa e organização dos conteúdos. O grupo deverá verificar as informações e acrescentar suas próprias observações.</p>
-    </div>
+   <h2>07. Uso da Inteligência Artificial</h2>
+   <div class="destaque">
+       <p><strong>Ferramenta utilizada:</strong> ChatGPT.</p>
+       <p>A ferramenta foi utilizada como apoio à pesquisa e organização dos conteúdos. O grupo deverá verificar as informações e acrescentar suas próprias observações.</p>
+   </div>
 </section>
+
 
 </main>
 
+
 <footer>
-    <h2>TechAcessível</h2>
-    <p>Projeto Integrador • Inteligência Artificial e Tecnologias</p>
-    <p>Robótica • 3º trimestre • 2026</p>
+   <h2>TechAcessível</h2>
+   <p>Projeto Integrador • Inteligência Artificial e Tecnologias</p>
+   <p>Robótica • 3º trimestre • 2026</p>
 </footer>
+
 
 </body>
 </html>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Física & Tecnociência - Acústica na Escola</title>
-    <link rel="stylesheet" href="style.css">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Física & Tecnociência - Acústica na Escola</title>
+   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>Física & Tecnociência — Análise Acústica</h1>
-            <p>Estudo de ondas sonoras, intensidade (dB) e poluição sonora no ambiente escolar</p>
-        </header>
 
-        <!-- PAINEL SUPERIOR: SIMULADOR DE ONDA SONORA -->
-        <section class="top-grid">
-            <div class="glass-card">
-                <div class="control-group">
-                    <label>
-                        <span>Amplitude (Intensidade Sonora)</span>
-                        <span id="val-amp">65 dB</span>
-                    </label>
-                    <input type="range" id="slider-amp" min="20" max="120" value="65">
-                </div>
+   <div class="container">
+       <header>
+           <h1>Física & Tecnociência — Análise Acústica</h1>
+           <p>Estudo de ondas sonoras, intensidade (dB) e poluição sonora no ambiente escolar</p>
+       </header>
 
-                <div class="control-group">
-                    <label>
-                        <span>Frequência (Tom da Onda)</span>
-                        <span id="val-freq">440 Hz</span>
-                    </label>
-                    <input type="range" id="slider-freq" min="100" max="1000" value="440">
-                </div>
 
-                <div class="diagnostico-box">
-                    <p><strong>Diagnóstico:</strong> <span id="diag-titulo" class="status-text">Som Moderado</span></p>
-                    <p><strong>Impacto:</strong> <span id="diag-impacto" style="color: var(--text-muted);">Pode gerar leve fadiga após longos períodos.</span></p>
-                </div>
-            </div>
+       <!-- PAINEL SUPERIOR: SIMULADOR DE ONDA SONORA -->
+       <section class="top-grid">
+           <div class="glass-card">
+               <div class="control-group">
+                   <label>
+                       <span>Amplitude (Intensidade Sonora)</span>
+                       <span id="val-amp">65 dB</span>
+                   </label>
+                   <input type="range" id="slider-amp" min="20" max="120" value="65">
+               </div>
 
-            <div class="glass-card wave-panel">
-                <canvas id="waveCanvas" width="600" height="160"></canvas>
-                <div class="wave-labels">
-                    <span id="label-amp">Amplitude Moderada</span>
-                    <span id="label-freq">Média Frequência</span>
-                </div>
-            </div>
-        </section>
 
-        <!-- PAINEL INFERIOR: TABELA DE MEDIÇÕES -->
-        <section class="glass-card">
-            <div class="table-header">
-                <div class="table-title">
-                    <h2>📊 Tabela de Medições na Escola</h2>
-                    <p>Registros coletados com aplicativo decibelímetro</p>
-                </div>
-                <button class="btn-add" onclick="toggleFormulario()">+ Adicionar Medição</button>
-            </div>
+               <div class="control-group">
+                   <label>
+                       <span>Frequência (Tom da Onda)</span>
+                       <span id="val-freq">440 Hz</span>
+                   </label>
+                   <input type="range" id="slider-freq" min="100" max="1000" value="440">
+               </div>
 
-            <!-- Formulário para adicionar nova linha -->
-            <div class="form-nova-medicao" id="form-medicao">
-                <input type="text" id="input-local" placeholder="Local (ex: biblioteca)">
-                <input type="number" id="input-db" placeholder="Nível (dB)" min="1" max="150">
-                <input type="text" id="input-contexto" placeholder="Contexto (ex: alunos estudando)">
-                <button class="btn-salvar" onclick="adicionarMedicao()">Salvar</button>
-            </div>
 
-            <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Local</th>
-                            <th>Data/Horário</th>
-                            <th>Nível (dB)</th>
-                            <th>Contexto</th>
-                            <th style="text-align: center;">Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tabela-corpo">
-                        <!-- Preenchido via JavaScript -->
-                    </tbody>
-                </table>
-            </div>
+               <div class="diagnostico-box">
+                   <p><strong>Diagnóstico:</strong> <span id="diag-titulo" class="status-text">Som Moderado</span></p>
+                   <p><strong>Impacto:</strong> <span id="diag-impacto" style="color: var(--text-muted);">Pode gerar leve fadiga após longos períodos.</span></p>
+               </div>
+           </div>
 
-            <div class="stats-bar">
-                <div><strong>Média Geral:</strong> <span id="media-geral" class="valor-destaque">0.0 dB</span></div>
-                <div><strong>Local mais Ruidoso:</strong> <span id="local-ruidoso" class="valor-destaque">-</span></div>
-                <div><strong>Local mais Silencioso:</strong> <span id="local-silencioso" class="valor-destaque">-</span></div>
-            </div>
-        </section>
 
-        <footer>
-            Projeto Integrador: Inteligência Artificial e Tecnologias • Escola 2026
-        </footer>
-    </div>
+           <div class="glass-card wave-panel">
+               <canvas id="waveCanvas" width="600" height="160"></canvas>
+               <div class="wave-labels">
+                   <span id="label-amp">Amplitude Moderada</span>
+                   <span id="label-freq">Média Frequência</span>
+               </div>
+           </div>
+       </section>
 
-    <script src="script.js"></script>
+
+       <!-- PAINEL INFERIOR: TABELA DE MEDIÇÕES -->
+       <section class="glass-card">
+           <div class="table-header">
+               <div class="table-title">
+                   <h2>📊 Tabela de Medições na Escola</h2>
+                   <p>Registros coletados com aplicativo decibelímetro</p>
+               </div>
+               <button class="btn-add" onclick="toggleFormulario()">+ Adicionar Medição</button>
+           </div>
+
+
+           <!-- Formulário para adicionar nova linha -->
+           <div class="form-nova-medicao" id="form-medicao">
+               <input type="text" id="input-local" placeholder="Local (ex: biblioteca)">
+               <input type="number" id="input-db" placeholder="Nível (dB)" min="1" max="150">
+               <input type="text" id="input-contexto" placeholder="Contexto (ex: alunos estudando)">
+               <button class="btn-salvar" onclick="adicionarMedicao()">Salvar</button>
+           </div>
+
+
+           <div class="table-wrapper">
+               <table>
+                   <thead>
+                       <tr>
+                           <th>Local</th>
+                           <th>Data/Horário</th>
+                           <th>Nível (dB)</th>
+                           <th>Contexto</th>
+                           <th style="text-align: center;">Ações</th>
+                       </tr>
+                   </thead>
+                   <tbody id="tabela-corpo">
+                       <!-- Preenchido via JavaScript -->
+                   </tbody>
+               </table>
+           </div>
+
+
+           <div class="stats-bar">
+               <div><strong>Média Geral:</strong> <span id="media-geral" class="valor-destaque">0.0 dB</span></div>
+               <div><strong>Local mais Ruidoso:</strong> <span id="local-ruidoso" class="valor-destaque">-</span></div>
+               <div><strong>Local mais Silencioso:</strong> <span id="local-silencioso" class="valor-destaque">-</span></div>
+           </div>
+       </section>
+
+
+       <footer>
+           Projeto Integrador: Inteligência Artificial e Tecnologias • Escola 2026
+       </footer>
+   </div>
+
+
+   <script src="script.js"></script>
 </body>
 </html>
 
+
 <section class="conclusao-escolar">
 
-    <h2>📊 Conclusão da Pesquisa</h2>
 
-    <p>
-        A partir das medições realizadas nos diferentes ambientes
-        da escola, identificamos níveis elevados de ruído, variando
-        entre 94 dB e 107 dB.
-    </p>
+   <h2>📊 Conclusão da Pesquisa</h2>
 
-    <p>
-        Na primeira análise, com três locais registrados, a média
-        foi de 99 dB. Após acrescentarmos mais duas medições,
-        realizadas no pátio e na sala do xerox, a média geral
-        aumentou para 100 dB.
-    </p>
 
-    <div class="destaques-conclusao">
+   <p>
+       A partir das medições realizadas nos diferentes ambientes
+       da escola, identificamos níveis elevados de ruído, variando
+       entre 94 dB e 107 dB.
+   </p>
 
-        <div class="destaque-ruido">
-            <span>Média inicial</span>
-            <strong>99 dB</strong>
-        </div>
 
-        <div class="destaque-ruido">
-            <span>Média final</span>
-            <strong>100 dB</strong>
-        </div>
+   <p>
+       Na primeira análise, com três locais registrados, a média
+       foi de 99 dB. Após acrescentarmos mais duas medições,
+       realizadas no pátio e na sala do xerox, a média geral
+       aumentou para 100 dB.
+   </p>
 
-        <div class="destaque-ruido">
-            <span>Local mais barulhento</span>
-            <strong>107 dB</strong>
-            <span>Refeitório</span>
-        </div>
 
-        <div class="destaque-ruido">
-            <span>Local mais silencioso</span>
-            <strong>94 dB</strong>
-            <span>Mesa de pingue-pongue</span>
-        </div>
+   <div class="destaques-conclusao">
+
+
+       <div class="destaque-ruido">
+           <span>Média inicial</span>
+           <strong>99 dB</strong>
+       </div>
+
+
+       <div class="destaque-ruido">
+           <span>Média final</span>
+           <strong>100 dB</strong>
+       </div>
+
+
+       <div class="destaque-ruido">
+           <span>Local mais barulhento</span>
+           <strong>107 dB</strong>
+           <span>Refeitório</span>
+       </div>
+
+
+       <div class="destaque-ruido">
+           <span>Local mais silencioso</span>
+           <strong>94 dB</strong>
+           <span>Mesa de pingue-pongue</span>
+       </div>
+
+
+   </div>
+
+
+   <p>
+       Comparando os ambientes, o refeitório apresentou o maior
+       resultado, com 107 dB, enquanto a mesa de pingue-pongue
+       apresentou o menor, com 94 dB. A diferença entre eles
+       foi de 13 dB. A sala do xerox registrou 105 dB e o pátio
+       98 dB.
+   </p>
+
+
+   <p>
+       Um fato importante é que alguns locais estavam vazios
+       durante as medições e, mesmo assim, apresentaram valores
+       elevados. Isso mostra a necessidade de investigar as
+       possíveis fontes de ruído em cada ambiente.
+   </p>
+
+
+   <div class="conclusao-final">
+       <strong>Resultado final:</strong>
+       <p>
+           Concluímos que a tecnologia pode ser uma grande aliada
+           na identificação e no monitoramento da poluição sonora
+           na escola. Com essas informações, podemos buscar
+           soluções para reduzir os ruídos e proporcionar um
+           ambiente mais confortável, tranquilo e adequado
+           para o aprendizado de alunos e professores.
+       </p>
+   </div>
+
 
     </div>
 
-    <p>
-        Comparando os ambientes, o refeitório apresentou o maior
-        resultado, com 107 dB, enquanto a mesa de pingue-pongue
-        apresentou o menor, com 94 dB. A diferença entre eles
-        foi de 13 dB. A sala do xerox registrou 105 dB e o pátio
-        98 dB.
-    </p>
+    <script>
+        function entrar() {
+            document.getElementById("tela-entrada").style.display = "none";
+            document.getElementById("site").style.display = "block";
+        }
+    </script>
 
-    <p>
-        Um fato importante é que alguns locais estavam vazios
-        durante as medições e, mesmo assim, apresentaram valores
-        elevados. Isso mostra a necessidade de investigar as
-        possíveis fontes de ruído em cada ambiente.
-    </p>
-
-    <div class="conclusao-final">
-        <strong>Resultado final:</strong>
-        <p>
-            Concluímos que a tecnologia pode ser uma grande aliada
-            na identificação e no monitoramento da poluição sonora
-            na escola. Com essas informações, podemos buscar
-            soluções para reduzir os ruídos e proporcionar um
-            ambiente mais confortável, tranquilo e adequado
-            para o aprendizado de alunos e professores.
-        </p>
-    </div>
+</body>
+</html>
